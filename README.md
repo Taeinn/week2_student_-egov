@@ -7,5 +7,7 @@
 | `egov-brief/` | ชุดโจทย์จาก TA (แตกจาก `week2_student.zip` · ห้ามแก้) |
 | `week2/LAB1-LAB2-NOTES.md` | สรุปโจทย์ (LAB 1) + ผลตรวจแผน (LAB 2 ขั้น 2) |
 | `week2/egov-eservice/` | แผน dag-planner: `blocks.json` `dag.png` `gantt-plan.png` `PLAN.md` |
+| `week2/HANDOFF.md` | **สถานะ + วิธีทำต่อบนเครื่องอื่น** (อ่านก่อน) |
+| `CLAUDE.md` | คำแนะนำสำหรับ Claude Code ใน repo นี้ |
 
 Container ที่ใช้: `devtools` (บัญชี yolo1 + cyolo1) · แผนใน container อยู่ที่ `/workspace/plans/egov-eservice/`
