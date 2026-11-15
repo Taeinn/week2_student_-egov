@@ -1,0 +1,126 @@
+'use strict';
+/**
+ * หน้า /citizen (บล็อก B05) · CONTRACT §2.4
+ *   citizen-welcome · start-service-SV-0x · my-case-row (เรียงเลขคำขอมากไปน้อย) · my-draft-row (ไม่มีข้อความ EG-)
+ *   row-case-no · row-service · row-status · row-due · row-sla-level · row-draft-id · open-draft-btn
+ */
+
+const { esc, fmtMoney, timeTag, serviceLabel } = require('../../lib/format');
+const { statusBadge, levelBadge } = require('../layout');
+const { SERVICES } = require('../../lib/constants');
+
+const PAGE_CSS = `<style>
+.svc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.svc-card{border:1px solid var(--border);border-radius:8px;padding:12px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.svc-card h3{margin:0;font-size:1.05rem}
+.svc-card p{margin:0}
+.svc-card .btn{align-self:flex-start}
+.actions{display:flex;flex-wrap:wrap;gap:6px}
+</style>`;
+
+/** ข้อความค่าธรรมเนียม/SLA ของบริการ (จากตาราง services ที่ admin แก้ได้) */
+function feeText(svc) {
+  if (!svc) return '';
+  if (svc.id === 'SV-01') return `${fmtMoney(svc.fee)} ต่อฉบับ (1–5 ฉบับ)`;
+  if (svc.id === 'SV-02') return `${fmtMoney(svc.fee)} คงที่`;
+  return `${fmtMoney(svc.fee)} (1–100 ตร.ม.) + ${fmtMoney(svc.fee_per_sqm)} ต่อ ตร.ม. ส่วนเกิน 100 (สูงสุด 500 ตร.ม.)`;
+}
+
+function serviceCards(services) {
+  const items = services
+    .map((s) => {
+      const meta = SERVICES[s.id] || {};
+      const docs = (meta.docs || []).map((d) => `${d.name}${d.required ? ' ✱' : ''}`).join(' · ');
+      return `<li class="svc-card">
+<h3>${esc(s.id)} ${esc(meta.name || s.name)}</h3>
+<p>ค่าธรรมเนียม: ${esc(feeText(s))}</p>
+<p class="muted">ระยะเวลา ${esc(s.sla_days)} วันทำการ · เอกสาร: ${esc(docs)}</p>
+<a class="btn btn-primary" data-testid="start-service-${esc(s.id)}" href="/citizen/new/${esc(s.id)}">ยื่นคำขอ ${esc(s.id)}</a>
+</li>`;
+    })
+    .join('');
+  return `<ul class="svc-list">${items}</ul>`;
+}
+
+function casesTable(cases) {
+  if (!cases.length) return '<p class="muted">ยังไม่มีคำขอที่ยื่นแล้ว</p>';
+  const rows = cases
+    .map(
+      (c) => `<tr data-testid="my-case-row" data-case-no="${esc(c.caseNo)}" data-status="${esc(c.status)}">
+<td><a data-testid="row-case-no" href="/citizen/cases/${esc(c.caseNo)}">${esc(c.caseNo)}</a></td>
+<td data-testid="row-service">${esc(serviceLabel(c.serviceId))}</td>
+<td>${statusBadge(c.status, 'row-status')}</td>
+<td>${timeTag(c.dueAt, 'row-due')}</td>
+<td>${c.slaLevel ? levelBadge(c.slaLevel, 'row-sla-level') : '–'}</td>
+</tr>`
+    )
+    .join('');
+  return `<div class="table-wrap"><table>
+<caption class="visually-hidden">คำขอของฉันที่ชำระเงินแล้ว (เรียงเลขคำขอล่าสุดก่อน)</caption>
+<thead><tr><th scope="col">เลขคำขอ</th><th scope="col">บริการ</th><th scope="col">สถานะ</th><th scope="col">กำหนดเสร็จ</th><th scope="col">ระดับเตือน</th></tr></thead>
+<tbody>${rows}</tbody></table></div>`;
+}
+
+function draftsTable(drafts) {
+  if (!drafts.length) return '<p class="muted">ไม่มีร่างหรือคำขอที่รอชำระเงิน</p>';
+  const rows = drafts
+    .map(
+      (d) => `<tr data-testid="my-draft-row" data-draft-id="${esc(d.draftId)}" data-status="${esc(d.status)}">
+<td data-testid="row-draft-id">${esc(d.draftId)}</td>
+<td data-testid="row-service">${esc(serviceLabel(d.serviceId))}</td>
+<td>${statusBadge(d.status, 'row-status')}</td>
+<td>${esc(fmtMoney(d.fee))}</td>
+<td><div class="actions"><a class="btn" data-testid="open-draft-btn" href="/citizen/new/${esc(d.serviceId)}?draft=${esc(d.draftId)}">เปิดร่าง ${esc(d.draftId)}</a>
+<button type="button" class="btn btn-danger" data-testid="delete-draft-btn" data-draft-id="${esc(d.draftId)}">ลบร่าง ${esc(d.draftId)}</button></div></td>
+</tr>`
+    )
+    .join('');
+  return `<div class="table-wrap"><table>
+<caption class="visually-hidden">ร่างและคำขอที่รอชำระเงิน (ยังไม่มีเลขคำขอ)</caption>
+<thead><tr><th scope="col">รหัสร่าง</th><th scope="col">บริการ</th><th scope="col">สถานะ</th><th scope="col">ค่าธรรมเนียม</th><th scope="col">ดำเนินการ</th></tr></thead>
+<tbody>${rows}</tbody></table></div>`;
+}
+
+const SCRIPT = `<script>
+(function(){
+  document.addEventListener('click', function(ev){
+    var b = ev.target && ev.target.closest ? ev.target.closest('[data-testid="delete-draft-btn"]') : null;
+    if (!b) return;
+    var id = b.getAttribute('data-draft-id');
+    if (!window.confirm('ลบร่าง ' + id + ' ? (ลบแล้วกู้คืนไม่ได้)')) return;
+    b.disabled = true;
+    App.api('DELETE', '/api/drafts/' + encodeURIComponent(id)).then(function(r){
+      if (r.ok) { window.location.reload(); return; }
+      b.disabled = false;
+      App.showError((r.data && r.data.message) || 'ลบร่างไม่สำเร็จ');
+    });
+  });
+})();
+</script>`;
+
+/**
+ * @param {object} o
+ * @param {{name:string}} o.user
+ * @param {Array<{id,fee,fee_per_sqm,sla_days,name}>} o.services
+ * @param {Array<{caseNo,serviceId,status,dueAt,slaLevel}>} o.cases
+ * @param {Array<{draftId,serviceId,status,fee}>} o.drafts
+ * @returns {{title:string, body:string, head:string, scripts:string}}
+ */
+function renderHome(o) {
+  const body = `<h1 data-testid="citizen-welcome">สวัสดี ${esc(o.user.name || '')}</h1>
+<section class="card" aria-labelledby="svc-heading">
+<h2 id="svc-heading">เริ่มยื่นคำขอ</h2>
+${serviceCards(o.services)}
+</section>
+<section class="card" aria-labelledby="drafts-heading">
+<h2 id="drafts-heading">ร่างและรอชำระเงิน</h2>
+${draftsTable(o.drafts)}
+</section>
+<section class="card" aria-labelledby="cases-heading">
+<h2 id="cases-heading">คำขอของฉัน</h2>
+${casesTable(o.cases)}
+</section>`;
+  return { title: 'คำขอของฉัน', body, head: PAGE_CSS, scripts: SCRIPT };
+}
+
+module.exports = { renderHome, feeText };

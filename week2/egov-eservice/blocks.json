@@ -11,15 +11,18 @@
       "difficulty": 4,
       "output": "src/server.js",
       "done": "docker compose up แล้ว GET /api/health ตอบ 200 {\"status\":\"ok\"} · TEST_MODE=1 มี POST /api/test/reset และ PUT /api/test/clock (ไม่ตั้ง → 404) · reset แล้วนาฬิกา = 2026-12-01T09:00:00+07:00",
-      "detail": "อ่าน README.md CONTRACT.md (§0 §1 §2.1 §4 §6.6 §8) DECISIONS.md (§0 §15) BUGS.md (ส่วนกลไก) · สร้าง package.json Dockerfile docker-compose.yml (env TEST_MODE BUG_MODE DB_PATH พอร์ต 3000 รับ body ≥ 6 MB) · src/server.js (Express ลงทะเบียน router ทุกไฟล์ใน src/routes/ แบบ optional ถ้าไฟล์ยังไม่มีให้ข้าม) · src/db/schema.sql + src/db/index.js (ทุกตารางของ FR-01..FR-29 รวม audit แบบ append-only, notifications, attachments, payments, documents) · src/lib/clock.js (now() จากนาฬิกาทดสอบ) · src/lib/bugs.js (isBug จาก BUG_MODE) · src/lib/format.js (วันที่ '4 ธ.ค. 2569 16:30', เงิน '฿1,010', data-iso +07:00) · src/lib/crypto.js (AES-256-GCM สำหรับเลขบัตร/เบอร์ ตาม NFR-04 · HMAC-SHA256) · src/views/layout.js (header/nav/กระดิ่งตาม CONTRACT §2.1, lang=th, skip link) · src/routes/test.js (reset เรียก src/db/seed.js ถ้ามี, clock, ล้าง session ทุกคน) · ห้ามเขียน seed.js และไฟล์ route อื่น"
+      "detail": "อ่าน README.md CONTRACT.md (§0 §1 §2.1 §4 §6.6 §8) DECISIONS.md (§0 §15) BUGS.md (ส่วนกลไก) · สร้าง package.json Dockerfile docker-compose.yml (env TEST_MODE BUG_MODE DB_PATH พอร์ต 3000 รับ body ≥ 6 MB) · src/server.js (Express ลงทะเบียน router ทุกไฟล์ใน src/routes/ แบบ optional ถ้าไฟล์ยังไม่มีให้ข้าม) · src/db/schema.sql + src/db/index.js (ทุกตารางของ FR-01..FR-29 รวม audit แบบ append-only, notifications, attachments, payments, documents) · src/lib/clock.js (now() จากนาฬิกาทดสอบ) · src/lib/bugs.js (isBug จาก BUG_MODE) · src/lib/format.js (วันที่ '4 ธ.ค. 2569 16:30', เงิน '฿1,010', data-iso +07:00) · src/lib/crypto.js (AES-256-GCM สำหรับเลขบัตร/เบอร์ ตาม NFR-04 · HMAC-SHA256) · src/views/layout.js (header/nav/กระดิ่งตาม CONTRACT §2.1, lang=th, skip link) · src/routes/test.js (reset เรียก src/db/seed.js ถ้ามี, clock, ล้าง session ทุกคน) · ห้ามเขียน seed.js และไฟล์ route อื่น · เสิร์ฟโฟลเดอร์ public/ เป็น static ที่ / และ header ใช้ <img src=\"/img/logo.png\" alt=\"ตราเทศบาลนครตัวอย่าง\"> ถ้าไฟล์ไม่มีต้องไม่พังหน้า",
+      "timeout": 1800
     },
     {
       "id": "B02",
       "title": "ข้อมูล seed ตาม TEST-DATA",
       "size": "M",
-      "depends_on": ["B01"],
+      "depends_on": [
+        "B01"
+      ],
       "skill": "cyolo",
-      "difficulty": 3,
+      "difficulty": 2,
       "output": "src/db/seed.js",
       "done": "หลัง reset มีผู้ใช้/บริการ/วันหยุด/คำขอ 30 ใบ + ร่าง 2 ใบ/เอกสาร 1 ใบ/การชำระตรง TEST-DATA ทุกค่า และ reset 2 ครั้งได้ข้อมูลเหมือนกัน",
       "detail": "อ่าน TEST-DATA.md ทั้งไฟล์ (โดยเฉพาะตาราง 1–6, 9–12) + CONTRACT §3 + schema.sql ของ B01 · export function seed(db) ที่ test.js เรียก · เลขบัตร/เบอร์เก็บแบบเข้ารหัสผ่าน src/lib/crypto.js · กำหนดเสร็จของคำขอ seed ใช้ค่าตาม TEST-DATA ตรงตัว (ไม่คำนวณเอง) · ห้ามแก้ไฟล์ของ B01"
@@ -28,7 +31,9 @@
       "id": "B03",
       "title": "กฎตัวเลข: ค่าธรรมเนียม · SLA วันทำการ · ระดับเตือน · เลขคำขอ · อายุเอกสาร",
       "size": "M",
-      "depends_on": ["B01"],
+      "depends_on": [
+        "B01"
+      ],
       "skill": "review",
       "worker": "yolo",
       "difficulty": 4,
@@ -40,8 +45,10 @@
       "id": "B04",
       "title": "ยืนยันตัวตน + ลงทะเบียน + RBAC",
       "size": "M",
-      "depends_on": ["B01"],
-      "skill": "cyolo",
+      "depends_on": [
+        "B01"
+      ],
+      "skill": "yolo",
       "difficulty": 3,
       "output": "src/routes/auth.js",
       "done": "ประชาชนล็อกอินเลขบัตร + OTP 123456 (ล็อก 15 นาทีหลังผิด 3 ครั้ง) · ลงทะเบียนครั้งแรก · เจ้าหน้าที่ SSO จำลองไปหน้าตั้งต้นตามบทบาท · middleware requireRole ตอบ 401/403/redirect ตาม CONTRACT §1",
@@ -51,30 +58,41 @@
       "id": "B05",
       "title": "ฝั่งประชาชน: ยื่นคำขอ · แนบไฟล์ · ชำระ QR · ติดตาม · ยกเลิก · ส่งแก้",
       "size": "L",
-      "depends_on": ["B03", "B04"],
+      "depends_on": [
+        "B03",
+        "B04"
+      ],
       "skill": "yolo",
       "difficulty": 4,
       "output": "src/routes/citizen.js",
       "done": "หน้า /citizen /citizen/new/:service /citizen/cases/:caseNo และ API §6.2 ทำงานครบ: ค่าธรรมเนียมทันที · ไฟล์ตรวจ magic bytes ≤ 5,242,880 ไบต์ ≤ 5 ไฟล์ · เอกสารบังคับ · QR 15:00 · ยอดล็อก · callback idempotent · เลข EG-<พ.ศ.>-<6 หลัก> ไม่ซ้ำเมื่อจ่ายพร้อมกัน · ยกเลิก/ลบร่าง/ส่งแก้ 168 ชม. · ของคนอื่น 404",
-      "detail": "อ่าน REQUIREMENTS FR-04..11 BR-04..11 BR-20 BR-22 · CONTRACT §2.4 §2.5 §2.6 §5 §6.2 §6.7 §8 (pay hook) · TEST-DATA §11 · ใช้ src/lib/rules.js ของ B03 และ rbac.js ของ B04 · ไฟล์ของบล็อก: src/routes/citizen.js + src/views/citizen/*.js + src/lib/upload.js · ฝังบั๊ก B02 B05 B06 ตาม BUGS.md · ทุก input มี label (NFR-03)"
+      "detail": "อ่าน REQUIREMENTS FR-04..11 BR-04..11 BR-20 BR-22 · CONTRACT §2.4 §2.5 §2.6 §5 §6.2 §6.7 §8 (pay hook) · TEST-DATA §11 · ใช้ src/lib/rules.js ของ B03 และ rbac.js ของ B04 · ไฟล์ของบล็อก: src/routes/citizen.js + src/views/citizen/*.js + src/lib/upload.js · ฝังบั๊ก B02 B05 B06 ตาม BUGS.md · ทุก input มี label (NFR-03)",
+      "timeout": 1800
     },
     {
       "id": "B06",
       "title": "ฝั่งเจ้าหน้าที่/หัวหน้า: คิว · รับเรื่อง · ตีกลับ · ส่งต่อ · อนุมัติ · ปิดบังเลขบัตร · ไฟล์แนบ",
       "size": "L",
-      "depends_on": ["B03", "B04"],
+      "depends_on": [
+        "B03",
+        "B04"
+      ],
       "skill": "yolo",
       "difficulty": 4,
       "output": "src/routes/officer.js",
       "done": "หน้า /officer/queue /officer/cases/:caseNo /head/approvals และ API §6.3 ทำงานครบ: คิวเรียงตามกำหนดเสร็จแล้วเลขคำขอ · รับเรื่องพร้อมกันได้ 1 คน อีกคน 409 · งานในมือ ≤ 10 · ตีกลับ ≤ 2 เหตุผล ≥ 10 ตัว · routing อัตโนมัติตามบริการ · อนุมัติตามอำนาจ · เลขบัตร X-XXXX-XXXXX-45-6 ไม่มี \\d{13} ใน JSON · unmask ต้องมีเหตุผล + audit",
-      "detail": "อ่าน REQUIREMENTS FR-12..16 FR-21 FR-29 BR-16..19 BR-21 BR-24 BR-29 · CONTRACT §2.6 §2.7 §2.8 §5 §6.3 §6.4 (ไฟล์แนบ) §6.8 · ไฟล์ของบล็อก: src/routes/officer.js + src/views/officer/*.js · claim ใช้ UPDATE แบบมีเงื่อนไขใน transaction (atomic) · audit CLAIM RETURN FORWARD APPROVE REJECT UNMASK · ฝังบั๊ก B07 B08 B09 B11 B12 ตาม BUGS.md"
+      "detail": "อ่าน REQUIREMENTS FR-12..16 FR-21 FR-29 BR-16..19 BR-21 BR-24 BR-29 · CONTRACT §2.6 §2.7 §2.8 §5 §6.3 §6.4 (ไฟล์แนบ) §6.8 · ไฟล์ของบล็อก: src/routes/officer.js + src/views/officer/*.js · claim ใช้ UPDATE แบบมีเงื่อนไขใน transaction (atomic) · audit CLAIM RETURN FORWARD APPROVE REJECT UNMASK · ฝังบั๊ก B07 B08 B09 B11 B12 ตาม BUGS.md",
+      "timeout": 1800
     },
     {
       "id": "B07",
       "title": "เอกสารดิจิทัล: ออกเอกสาร · PDF · ลายเซ็น HMAC · /verify",
       "size": "M",
-      "depends_on": ["B03", "B04"],
-      "skill": "cyolo",
+      "depends_on": [
+        "B03",
+        "B04"
+      ],
+      "skill": "yolo",
       "difficulty": 3,
       "output": "src/routes/documents.js",
       "done": "ออกเอกสารจากคำขอ APPROVED → COMPLETED ได้เลขเอกสาร + รหัสตรวจ + PDF ดาวน์โหลดได้ · /verify/<รหัส> แสดง เอกสารถูกต้อง/เอกสารหมดอายุ/ลายเซ็นไม่ถูกต้อง/ไม่พบเอกสาร (404) ตรงตัว · ชื่อปิดบังรูปแบบ 'สมชาย ใ***' · tamper hook ทำงาน",
@@ -84,19 +102,25 @@
       "id": "B08",
       "title": "แจ้งเตือน SLA (กระดิ่ง) + ยกเลิกอัตโนมัติเมื่อเลย 168 ชม.",
       "size": "M",
-      "depends_on": ["B03", "B04"],
+      "depends_on": [
+        "B03",
+        "B04"
+      ],
       "skill": "review",
-      "worker": "cyolo",
+      "worker": "yolo",
       "difficulty": 4,
       "output": "src/lib/notify.js",
       "done": "middleware ประเมินทุก request (ยกเว้น /api/test/*) สร้างแจ้งเตือน 1 ครั้งต่อระดับต่อคำขอต่อคนตามผู้รับใน BR-15 และยกเลิก NEED_FIX ที่เลย 168 ชม. · หน้า /notifications แสดงตาม CONTRACT §2.12 · ผลตรง TEST-DATA §8 ทั้งชุด",
-      "detail": "อ่าน REQUIREMENTS FR-20 BR-14 BR-15 BR-20 · CONTRACT §0 ข้อ 7 §2.12 · TEST-DATA §8 §8.1 §8.2 · ใช้ slaLevel ของ B03 · ไฟล์ของบล็อก: src/lib/notify.js (export middleware) + src/routes/notifications.js · ผู้ตรวจ (Claude) เทียบผลกับ TEST-DATA §8 ทีละแถว"
+      "detail": "อ่าน REQUIREMENTS FR-20 BR-14 BR-15 BR-20 · CONTRACT §0 ข้อ 7 §2.12 · TEST-DATA §8 §8.1 §8.2 · ใช้ slaLevel ของ B03 · ไฟล์ของบล็อก: src/lib/notify.js (export middleware) + src/routes/notifications.js · ผู้ตรวจ (Codex) เทียบผลกับ TEST-DATA §8 ทีละแถว"
     },
     {
       "id": "B09",
       "title": "Dashboard ผู้บริหาร + ส่งออก Excel/PDF",
       "size": "M",
-      "depends_on": ["B03", "B04"],
+      "depends_on": [
+        "B03",
+        "B04"
+      ],
       "skill": "review",
       "worker": "yolo",
       "difficulty": 4,
@@ -108,8 +132,10 @@
       "id": "B10",
       "title": "Audit Trail + ผู้ดูแลระบบ (บริการ วันหยุด ผู้ใช้)",
       "size": "M",
-      "depends_on": ["B04"],
-      "skill": "cyolo",
+      "depends_on": [
+        "B04"
+      ],
+      "skill": "yolo",
       "difficulty": 3,
       "output": "src/routes/admin.js",
       "done": "/audit กรองผู้ทำ/เหตุการณ์/ช่วงวันที่ตามเวลาไทย ส่งออก CSV · PUT/PATCH/DELETE ของ audit ทุกเส้น 405 · /admin/services /admin/holidays /admin/users แก้ได้ตามช่วง BR-28 พร้อม error code ตรงตัว · audit ADMIN_CHANGE",
@@ -121,7 +147,7 @@
       "size": "S",
       "depends_on": [],
       "skill": "cyolo",
-      "difficulty": 3,
+      "difficulty": 2,
       "output": "tests/helpers.ts",
       "done": "tests/package.json + playwright.config.ts (BASE_URL, GIF/วิดีโอสำหรับ P1, reporter json+html) + helpers.ts (reset, setClock, loginCitizen, loginStaff, pay hook, tamper, make_testfiles ตาม TEST-DATA §11) และ npx playwright test --list ทำงาน",
       "detail": "อ่านได้แค่ TEST-PLAN.md §0 CONTRACT.md TEST-DATA.md §1 §11 · ห้ามอ่านโค้ดใน src/ · ไฟล์ของบล็อก: tests/package.json tests/playwright.config.ts tests/helpers.ts tests/fixtures/make-testfiles.ts · หลัง reset ทุกครั้งต้องสร้าง context/ล็อกอินใหม่"
@@ -130,35 +156,63 @@
       "id": "B12",
       "title": "Playwright ชุด A: AUTH FEE SUBMIT UPLOAD PAY QUEUE SLA NOTI (22 TC)",
       "size": "L",
-      "depends_on": ["B11"],
-      "skill": "cyolo",
+      "depends_on": [
+        "B11"
+      ],
+      "skill": "yolo",
       "difficulty": 4,
       "output": "tests/specs/part-a.spec.ts",
       "done": "มี test ครบ 22 TC (TC-AUTH-01..04 FEE-01 SUBMIT-01..03 UPLOAD-01..02 PAY-01..04 QUEUE-01..03 SLA-01..03 NOTI-01..02) ชื่อขึ้นต้นด้วยรหัส TC · ผลที่คาดหวังตรงการ์ดตัวอักษร · tsc ไม่ error",
-      "detail": "อ่านได้แค่ TEST-PLAN.md (หมวด 2–9 + ตาราง BR→TC) CONTRACT.md TEST-DATA.md และ tests/helpers.ts ของ B11 · ห้ามอ่านโค้ดใน src/ · ข้อที่ BUGS.md ใช้จับบั๊ก (B01 B02 B03 B04 B05 B08) ต้องยิง API/ตรวจค่าตรง ไม่ใช่ดูแค่ปุ่ม"
+      "detail": "อ่านได้แค่ TEST-PLAN.md (หมวด 2–9 + ตาราง BR→TC) CONTRACT.md TEST-DATA.md และ tests/helpers.ts ของ B11 · ห้ามอ่านโค้ดใน src/ · ข้อที่ BUGS.md ใช้จับบั๊ก (B01 B02 B03 B04 B05 B08) ต้องยิง API/ตรวจค่าตรง ไม่ใช่ดูแค่ปุ่ม",
+      "timeout": 1800
     },
     {
       "id": "B13",
       "title": "Playwright ชุด B: WORKFLOW DOC PDPA DASH AUDIT RBAC NFR (29 TC)",
       "size": "L",
-      "depends_on": ["B11"],
+      "depends_on": [
+        "B11"
+      ],
       "skill": "yolo",
       "difficulty": 4,
       "output": "tests/specs/part-b.spec.ts",
       "done": "มี test ครบ 29 TC (TC-WORKFLOW-01..06 DOC-01..03 PDPA-01..03 DASH-01..04 AUDIT-01..03 RBAC-01..06 NFR-01..04) ชื่อขึ้นต้นด้วยรหัส TC · ใช้ @axe-core/playwright · tsc ไม่ error",
-      "detail": "อ่านได้แค่ TEST-PLAN.md (หมวด 10 เป็นต้นไป + ตาราง BR→TC) CONTRACT.md TEST-DATA.md และ tests/helpers.ts ของ B11 · ห้ามอ่านโค้ดใน src/ · TC-RBAC-02 ต้องยิง POST /api/cases/…/approve ตรง (กันผ่านหลอกแบบ B07) · TC-NFR-04 อ่านฐานข้อมูลที่ DB_PATH"
+      "detail": "อ่านได้แค่ TEST-PLAN.md (หมวด 10 เป็นต้นไป + ตาราง BR→TC) CONTRACT.md TEST-DATA.md และ tests/helpers.ts ของ B11 · ห้ามอ่านโค้ดใน src/ · TC-RBAC-02 ต้องยิง POST /api/cases/…/approve ตรง (กันผ่านหลอกแบบ B07) · TC-NFR-04 อ่านฐานข้อมูลที่ DB_PATH",
+      "timeout": 1800
+    },
+    {
+      "id": "B15",
+      "title": "ตราเทศบาล (โลโก้ header)",
+      "size": "S",
+      "depends_on": [],
+      "skill": "image",
+      "difficulty": 1,
+      "output": "public/img/logo.png",
+      "done": "PNG ตราสัญลักษณ์วงกลมเรียบ ๆ ของ 'เทศบาลนครตัวอย่าง' สีน้ำเงินกรมท่า-ทอง พื้นโปร่งหรือขาว อ่านชัดที่ขนาด 48px ไม่มีตัวอักษรยาว",
+      "detail": "ภาพตกแต่งเท่านั้น ไม่มีบล็อกใดรอภาพนี้ (ถ้าล้ม เว็บยังผ่าน test ได้)"
     },
     {
       "id": "B14",
       "title": "รวม + รัน Playwright เต็ม + BUG_MODE ทีละตัว",
       "size": "L",
-      "depends_on": ["B02", "B05", "B06", "B07", "B08", "B09", "B10", "B12", "B13"],
+      "depends_on": [
+        "B02",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B12",
+        "B13"
+      ],
       "skill": "yolo",
       "difficulty": 5,
       "output": "INTEGRATION.md",
       "done": "docker compose up ด้วย TEST_MODE=1 แล้ว Playwright ผ่านครบ 51/51 · BUG_MODE=B01..B12 ทีละตัว TC ที่ BUGS.md ระบุล้มจริง · INTEGRATION.md บันทึกผลทั้ง 13 รอบและสิ่งที่แก้ (แยก เว็บผิด/test ผิด/โจทย์ผิด)",
       "detail": "อ่านทุกไฟล์ใน /workspace/egov-brief · แก้ไฟล์ของบล็อกอื่นได้ (exclusive) · ห้ามแก้ผลที่คาดหวังใน test ให้ตรงหน้าจอ · โจทย์ผิด → จดเป็นคำถามถึง TA ใน INTEGRATION.md ไม่แก้เอง",
-      "exclusive": true
+      "exclusive": true,
+      "timeout": 3600
     }
   ]
 }

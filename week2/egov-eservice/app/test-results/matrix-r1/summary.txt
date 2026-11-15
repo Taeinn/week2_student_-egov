@@ -1,0 +1,108 @@
+
+=== clean · 51 passed · 0 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=- · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: –
+    ล้มจริง:   –
+
+=== clean-rerun · 51 passed · 0 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=- · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: –
+    ล้มจริง:   –
+
+=== B01 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B01 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-FEE-01
+    ล้มจริง:   TC-FEE-01
+    - TC-FEE-01: Error: area 101 | Expected: "฿1,010" | Received: "฿1,000"
+
+=== B02 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B02 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-UPLOAD-01
+    ล้มจริง:   TC-UPLOAD-01
+    - TC-UPLOAD-01: Error: expect(locator).toHaveCount(expected) failed | Expected: 1 | Received: 0
+
+=== B03 · 46 passed · 5 failed · 0 skipped · total 51 → OK* (มี TC ล้มเกินตาราง · รอ TA)
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B03 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-SLA-01 · TC-SLA-02 (อาจล้มด้วย TC-SLA-03 · TC-RBAC-04)
+    ล้มจริง:   TC-SLA-01 · TC-SLA-02 · TC-SLA-03 · TC-NOTI-02 · TC-RBAC-04
+    ล้มเกินตาราง แต่เป็นกลไกเดียวกัน (รอ TA ยืนยัน): TC-NOTI-02
+    - TC-SLA-01: Error: แถว c dueAt | Expected: "2026-12-08T16:30:00+07:00" | Received: "2026-12-07T16:30:00+07:00"
+    - TC-SLA-02: Error: expect(received).toBe(expected) // Object.is equality | Expected: "2026-12-08T16:30:00+07:00" | Received: "2026-12-07T16:30:00+07:00"
+    - TC-SLA-03: Error: sla-level = near | Expected: "ใกล้ครบกำหนด" | Received: "ปกติ"
+    - TC-NOTI-02: Error: off.reg2 noti-item | Expected: 10 | Received: 9
+    - TC-RBAC-04: Error: expect(received).toBe(expected) // Object.is equality | Expected: "2026-12-08T16:30:00+07:00" | Received: "2026-12-04T16:30:00+07:00"
+
+=== B04 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B04 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-SLA-02
+    ล้มจริง:   TC-SLA-02
+    - TC-SLA-02: Error: expect(received).toBe(expected) // Object.is equality | Expected: "2026-12-08T16:30:00+07:00" | Received: "2026-12-04T16:30:00+07:00"
+
+=== B05 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B05 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-PAY-01
+    ล้มจริง:   TC-PAY-01
+    - TC-PAY-01: Error: http://localhost:3000/api/test/payments/PP-0001/pay → {"status":"PAID","caseNo":"EG-2569-000031","receiptNo":"RC-2569-000031","duplicate":false} | Expected: 410 | Received: 200
+
+=== B06 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B06 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-RBAC-01
+    ล้มจริง:   TC-RBAC-01
+    - TC-RBAC-01: Error: expect(received).toBe(expected) // Object.is equality | Expected: 404 | Received: 200
+
+=== B07 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B07 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-RBAC-02 (อาจล้มด้วย TC-WORKFLOW-01)
+    ล้มจริง:   TC-RBAC-02
+    - TC-RBAC-02: Error: off.reg2 approve 000014 http://localhost:3000/api/cases/EG-2569-000014/approve → 200 {"status":"APPROVED","caseNo":"EG-2569-000014"} | Expected: 403 | Received: 200
+
+=== B08 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B08 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-QUEUE-02
+    ล้มจริง:   TC-QUEUE-02
+    ล้มด้วย timeout/หา element ไม่เจอ: TC-QUEUE-02
+    - TC-QUEUE-02: Error: expect(locator).toHaveText(expected) failed | Expected: "มีเจ้าหน้าที่รับเรื่องนี้แล้ว" | Error: element(s) not found
+
+=== B09 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B09 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-PDPA-02
+    ล้มจริง:   TC-PDPA-02
+    - TC-PDPA-02: Error: off.reg1 GET /api/officer/queue?filter=all: ตัวเลข 13 หลัก | diff: - Array [] + Array [ + "1101700123456", + "3100600987659",
+
+=== B10 · 48 passed · 3 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B10 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-DASH-02 (อาจล้มด้วย TC-DASH-01 · TC-DASH-03)
+    ล้มจริง:   TC-DASH-01 · TC-DASH-02 · TC-DASH-03
+    - TC-DASH-01: Error: 2026-12/ALL kpi-ontime-pct | Expected: "–" | Received: "0.0%" | diff: - 2026-12/ALL kpi-ontime-pct getByTestId('kpi-ontime-pct') with timeout 5000ms
+    - TC-DASH-02: Error: 2026-11/ALL kpi-ontime-pct | Expected: "85.7%" | Received: "23.1%" | diff: - 2026-11/ALL kpi-ontime-pct getByTestId('kpi-ontime-pct') with timeout 5000ms
+    - TC-DASH-03: Error: 2026-11/ALL kpi-ontime-pct | Expected: "85.7%" | Received: "23.1%" | diff: - 2026-11/ALL kpi-ontime-pct getByTestId('kpi-ontime-pct') with timeout 5000ms
+
+=== B11 · 49 passed · 2 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B11 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-PDPA-03 · TC-AUDIT-01
+    ล้มจริง:   TC-PDPA-03 · TC-AUDIT-01
+    - TC-PDPA-03: Error: expect(locator).toHaveText(expected) failed | Expected: "1" | Received: "0"
+    - TC-AUDIT-01: Error: expect(locator).toHaveText(expected) failed | Expected: "16" | Received: "15"
+
+=== B12 · 50 passed · 1 failed · 0 skipped · total 51 → OK
+    server: [egov] http://0.0.0.0:3000 · TEST_MODE=1 · BUG_MODE=B12 · DB_PATH=/app/data/egov.db · now=2026-12-01T09:00:00+07:00
+    คาดว่าล้ม: TC-WORKFLOW-04
+    ล้มจริง:   TC-WORKFLOW-04
+    - TC-WORKFLOW-04: Error: expect(locator).toHaveCount(expected) failed | Expected: 0 | Received: 1
+
+| โหมด | passed | failed | TC ที่ล้มจริง | ล้มเกินที่คาด | ควรล้มแต่ผ่าน | ผล |
+|---|---|---|---|---|---|---|
+| clean | 51 | 0 | – | – | – | ✅ |
+| clean-rerun | 51 | 0 | – | – | – | ✅ |
+| B01 | 50 | 1 | TC-FEE-01 | – | – | ✅ |
+| B02 | 50 | 1 | TC-UPLOAD-01 | – | – | ✅ |
+| B03 | 46 | 5 | TC-SLA-01 · TC-SLA-02 · TC-SLA-03 · TC-NOTI-02 · TC-RBAC-04 | TC-NOTI-02 (กลไกเดียวกัน · รอ TA) | – | ✅* |
+| B04 | 50 | 1 | TC-SLA-02 | – | – | ✅ |
+| B05 | 50 | 1 | TC-PAY-01 | – | – | ✅ |
+| B06 | 50 | 1 | TC-RBAC-01 | – | – | ✅ |
+| B07 | 50 | 1 | TC-RBAC-02 | – | – | ✅ |
+| B08 | 50 | 1 | TC-QUEUE-02 | – | – | ⚠️ |
+| B09 | 50 | 1 | TC-PDPA-02 | – | – | ✅ |
+| B10 | 48 | 3 | TC-DASH-01 · TC-DASH-02 · TC-DASH-03 | – | – | ✅ |
+| B11 | 49 | 2 | TC-PDPA-03 · TC-AUDIT-01 | – | – | ✅ |
+| B12 | 50 | 1 | TC-WORKFLOW-04 | – | – | ✅ |

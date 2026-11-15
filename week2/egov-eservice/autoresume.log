@@ -1,0 +1,171 @@
+[2026-11-15 20:09:06] ยังไม่ครบ: B05:failed B06:failed B08:failed B14:blocked
+[2026-11-15 20:09:10] ยังไม่มีบัญชี yolo พร้อม (โควตาหมด?) · ตรวจใหม่ใน 900s
+| yolo1 | 100 | Nov 16, 12am (Asia/Bangkok) | 43 | Nov 16, 12pm (Asia/Bangkok) | 2026-11-15T20:09:10 |  |
+| yolo2 | 100 | Nov 15, 9:30pm (Asia/Bangkok) | 48 | Nov 18, 7pm (Asia/Bangkok) | 2026-11-15T20:09:12 |  |
+| cyolo1 | - | - | 3 | 2026-12-11 10:28 | 2026-11-11T10:49:32 |  |
+| cyolo2 | - | - | 6 | 2026-12-05 17:04 | 2026-11-15T19:27:10 |  |
+[2026-11-15 20:24:21] ยังไม่มีบัญชี yolo พร้อม (โควตาหมด?) · ตรวจใหม่ใน 900s
+| yolo1 | 100 | Nov 15, 11:59pm (Asia/Bangkok) | 43 | Nov 16, 11:59am (Asia/Bangkok) | 2026-11-15T20:24:21 |  |
+| yolo2 | 100 | Nov 15, 9:30pm (Asia/Bangkok) | 48 | Nov 18, 7pm (Asia/Bangkok) | 2026-11-15T20:24:24 |  |
+| cyolo1 | - | - | 3 | 2026-12-11 10:28 | 2026-11-11T10:49:32 |  |
+| cyolo2 | - | - | 6 | 2026-12-05 17:04 | 2026-11-15T19:27:10 |  |
+[2026-11-15 20:39:33] ยังไม่มีบัญชี yolo พร้อม (โควตาหมด?) · ตรวจใหม่ใน 900s
+| yolo1 | 100 | Nov 15, 11:59pm (Asia/Bangkok) | 43 | Nov 16, 11:59am (Asia/Bangkok) | 2026-11-15T20:39:33 |  |
+| yolo2 | 100 | Nov 15, 9:30pm (Asia/Bangkok) | 48 | Nov 18, 7pm (Asia/Bangkok) | 2026-11-15T20:39:37 |  |
+| cyolo1 | - | - | 3 | 2026-12-11 10:28 | 2026-11-11T10:49:32 |  |
+| cyolo2 | - | - | 6 | 2026-12-05 17:04 | 2026-11-15T19:27:10 |  |
+[2026-11-15 20:54:46] ยังไม่มีบัญชี yolo พร้อม (โควตาหมด?) · ตรวจใหม่ใน 900s
+| yolo1 | 100 | Nov 15, 11:59pm (Asia/Bangkok) | 43 | Nov 16, 11:59am (Asia/Bangkok) | 2026-11-15T20:54:46 |  |
+| yolo2 | 100 | Nov 15, 9:30pm (Asia/Bangkok) | 48 | Nov 18, 7pm (Asia/Bangkok) | 2026-11-15T20:54:49 |  |
+| cyolo1 | - | - | 3 | 2026-12-11 10:28 | 2026-11-11T10:49:32 |  |
+| cyolo2 | - | - | 6 | 2026-12-05 17:04 | 2026-11-15T19:27:10 |  |
+[2026-11-15 21:09:57] ยังไม่มีบัญชี yolo พร้อม (โควตาหมด?) · ตรวจใหม่ใน 900s
+| yolo1 | 100 | Nov 16, 12am (Asia/Bangkok) | 43 | Nov 16, 12pm (Asia/Bangkok) | 2026-11-15T21:09:57 |  |
+| yolo2 | 100 | Nov 15, 9:30pm (Asia/Bangkok) | 48 | Nov 18, 7pm (Asia/Bangkok) | 2026-11-15T21:10:01 |  |
+| cyolo1 | - | - | 3 | 2026-12-11 10:28 | 2026-11-11T10:49:32 |  |
+| cyolo2 | - | - | 6 | 2026-12-05 17:04 | 2026-11-15T19:27:10 |  |
+[2026-11-15 21:25:09] ยังไม่มีบัญชี yolo พร้อม (โควตาหมด?) · ตรวจใหม่ใน 900s
+| yolo1 | 100 | Nov 15, 11:59pm (Asia/Bangkok) | 43 | Nov 16, 11:59am (Asia/Bangkok) | 2026-11-15T21:25:09 |  |
+| yolo2 | 100 | Nov 15, 9:30pm (Asia/Bangkok) | 48 | Nov 18, 7pm (Asia/Bangkok) | 2026-11-15T21:25:12 |  |
+| cyolo1 | - | - | 3 | 2026-12-11 10:28 | 2026-11-11T10:49:32 |  |
+| cyolo2 | - | - | 6 | 2026-12-05 17:04 | 2026-11-15T19:27:10 |  |
+[2026-11-15 21:40:22] resume ครั้งที่ 1
+▶ resume egov-eservice-20261115-192743: รันใหม่เฉพาะ B05, B06, B08, B14 (งานที่สำเร็จแล้วไม่รันซ้ำ)
+· ใช้ผลตรวจความพร้อม (เรียกจริง) จาก cache ≤10 นาที: cyolo1=พร้อม@21:40:20, cyolo2=พร้อม@21:40:22, yolo1=ผิดพลาด@21:40:18, yolo2=พร้อม@21:40:18
+▶ B05 → yolo2 (opus/xhigh)
+▶ B06 → yolo2 (opus/xhigh)
+▶ B08#w1 → yolo2 (opus/xhigh)
+✔ B08#w1 ← yolo2 325.3s in=52 out=30690 
+▶ B08#r1 → cyolo1 (gpt-6-luna/xhigh)
+✔ B08#r1 ← cyolo1 94.1s in=247488 out=4705 
+▶ B08#w2 → yolo2 (opus/xhigh)
+✔ B05 ← yolo2 537.2s in=122 out=42601 
+✔ B08#w2 ← yolo2 262.1s in=34 out=27962 
+▶ B08#r2 → cyolo2 (gpt-6-luna/xhigh)
+✔ B08#r2 ← cyolo2 144.6s in=591469 out=7009 
+✔ B08 APPROVED ในรอบ 2
+✔ B06 ← yolo2 1475.2s in=116 out=42549 
+▶ B14 → yolo2 (opus/max)
+⏸ yolo2 หยุดรับงานใหม่: โควตา 80% ≥ เกณฑ์ 80%
+✘ B14 ← yolo2 3600.9s in=548 out=2153 (timeout: timeout after 3600s)
+✘ B14: timeout after 3600s
+
+## สรุป run egov-eservice-20261115-192743
+run directory: /workspace/.agent-team/egov-eservice-20261115-192743
+
+| งาน | บัญชี | รุ่น/effort | เวลา s | input tokens | output tokens | สถานะ |
+|---|---|---|---|---|---|---|
+| B01 | yolo1 | opus/xhigh | 1117.7 | 106 | 112468 | ok |
+| B11 | cyolo1 | gpt-6-luna/medium | 83.3 | 119331 | 4230 | ok |
+| B15 | cyolo2 | gpt-6-luna/low | 55.6 | 300245 | 2193 | ok (PNG ตรวจ signature แล้ว: /workspace/plans/egov-eservice/app/public/img/logo.png) |
+| B12 | yolo2 | opus/xhigh | 913.7 | 46 | 107459 | ok |
+| B13 | yolo1 | opus/xhigh | 1233.6 | 50 | 143258 | ok |
+| B02 | cyolo1 | gpt-6-luna/medium | 186.6 | 456006 | 9563 | ok |
+| B03 | cyolo2,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 475.5 | 341866 | 51141 | ok (APPROVED รอบ 1 โดย cyolo2) |
+| B04 | yolo2 | opus/high | 377.9 | 62 | 39594 | ok |
+| B10 | yolo1 | opus/high | 278.3 | 62 | 31537 | ok |
+| B05 | yolo2 | opus/xhigh | 537.3 | 228 | 143594 | ok |
+| B06 | yolo1,yolo2 | opus/xhigh | 1475.3 | 212 | 117539 | ok |
+| B07 | yolo2 | opus/high | 331.9 | 66 | 33312 | ok |
+| B08 | cyolo1,cyolo2,yolo1,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 826.2 | 1190869 | 105903 | ok (APPROVED รอบ 2 โดย cyolo2) |
+| B09 | cyolo1,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 631.6 | 835068 | 49635 | ok (APPROVED รอบ 1 โดย cyolo1) |
+| B14 | yolo2 | opus/max | 3600.9 | 548 | 2153 | failed: timeout after 3600s |
+
+การย้ายงานลูกทีม:
+| งาน | จาก | ไป | เหตุผล | เวลา |
+|---|---|---|---|---|
+| B08#w1 | yolo2 | yolo1 | บัญชี yolo2 หยุดรับงาน: โควตา 84% ≥ เกณฑ์ 80% | 19:59:57 |
+| B14 | yolo1 |  | บัญชี yolo1 หยุดรับงาน: โควตา 98% ≥ เกณฑ์ 80% | 20:04:22 |
+
+โควตาของบัญชีที่ใช้:
+| บัญชี | โควตาล่าสุด |
+|---|---|
+| cyolo1 | week 3% (ข้อมูล 2026-11-11 10:49) |
+| cyolo2 | week 6% (ข้อมูล 2026-11-15 19:27) |
+| yolo1 | session 100% · week 43% (ข้อมูล 2026-11-15 21:40) |
+| yolo2 | session 80% · week 56% (ข้อมูล 2026-11-15 23:01) |
+[2026-11-15 23:05:03] ยังไม่ครบ: B14:failed
+[2026-11-15 23:05:10] resume ครั้งที่ 2
+▶ resume egov-eservice-20261115-192743: รันใหม่เฉพาะ B14 (งานที่สำเร็จแล้วไม่รันซ้ำ)
+· ใช้ผลตรวจความพร้อม (เรียกจริง) จาก cache ≤10 นาที: cyolo1=พร้อม@23:05:10, cyolo2=พร้อม@23:05:10, yolo1=ผิดพลาด@23:05:07, yolo2=พร้อม@23:05:09
+✘ B14: ไม่มีบัญชีที่พร้อมสำหรับ yolo (kind=None)
+
+## สรุป run egov-eservice-20261115-192743
+run directory: /workspace/.agent-team/egov-eservice-20261115-192743
+
+| งาน | บัญชี | รุ่น/effort | เวลา s | input tokens | output tokens | สถานะ |
+|---|---|---|---|---|---|---|
+| B01 | yolo1 | opus/xhigh | 1117.7 | 106 | 112468 | ok |
+| B11 | cyolo1 | gpt-6-luna/medium | 83.3 | 119331 | 4230 | ok |
+| B15 | cyolo2 | gpt-6-luna/low | 55.6 | 300245 | 2193 | ok (PNG ตรวจ signature แล้ว: /workspace/plans/egov-eservice/app/public/img/logo.png) |
+| B12 | yolo2 | opus/xhigh | 913.7 | 46 | 107459 | ok |
+| B13 | yolo1 | opus/xhigh | 1233.6 | 50 | 143258 | ok |
+| B02 | cyolo1 | gpt-6-luna/medium | 186.6 | 456006 | 9563 | ok |
+| B03 | cyolo2,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 475.5 | 341866 | 51141 | ok (APPROVED รอบ 1 โดย cyolo2) |
+| B04 | yolo2 | opus/high | 377.9 | 62 | 39594 | ok |
+| B10 | yolo1 | opus/high | 278.3 | 62 | 31537 | ok |
+| B05 | yolo2 | opus/xhigh | 537.3 | 228 | 143594 | ok |
+| B06 | yolo1,yolo2 | opus/xhigh | 1475.3 | 212 | 117539 | ok |
+| B07 | yolo2 | opus/high | 331.9 | 66 | 33312 | ok |
+| B08 | cyolo1,cyolo2,yolo1,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 826.2 | 1190869 | 105903 | ok (APPROVED รอบ 2 โดย cyolo2) |
+| B09 | cyolo1,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 631.6 | 835068 | 49635 | ok (APPROVED รอบ 1 โดย cyolo1) |
+| B14 | yolo2 | opus/max | 3600.9 | 548 | 2153 | failed: ไม่มีบัญชีที่พร้อมสำหรับ yolo (kind=None) |
+
+การย้ายงานลูกทีม:
+| งาน | จาก | ไป | เหตุผล | เวลา |
+|---|---|---|---|---|
+| B08#w1 | yolo2 | yolo1 | บัญชี yolo2 หยุดรับงาน: โควตา 84% ≥ เกณฑ์ 80% | 19:59:57 |
+| B14 | yolo1 |  | บัญชี yolo1 หยุดรับงาน: โควตา 98% ≥ เกณฑ์ 80% | 20:04:22 |
+
+โควตาของบัญชีที่ใช้:
+| บัญชี | โควตาล่าสุด |
+|---|---|
+| cyolo1 | week 3% (ข้อมูล 2026-11-11 10:49) |
+| cyolo2 | week 6% (ข้อมูล 2026-11-15 19:27) |
+| yolo1 | session 100% · week 43% (ข้อมูล 2026-11-15 23:05) |
+| yolo2 | session 80% · week 56% (ข้อมูล 2026-11-15 23:05) |
+[2026-11-15 23:05:15] ยังไม่ครบ: B14:failed
+[2026-11-15 23:05:20] resume ครั้งที่ 3
+▶ resume egov-eservice-20261115-192743: รันใหม่เฉพาะ B14 (งานที่สำเร็จแล้วไม่รันซ้ำ)
+· ใช้ผลตรวจความพร้อม (เรียกจริง) จาก cache ≤10 นาที: cyolo1=พร้อม@23:05:19, cyolo2=พร้อม@23:05:20, yolo1=ผิดพลาด@23:05:19, yolo2=พร้อม@23:05:20
+✘ B14: ไม่มีบัญชีที่พร้อมสำหรับ yolo (kind=None)
+
+## สรุป run egov-eservice-20261115-192743
+run directory: /workspace/.agent-team/egov-eservice-20261115-192743
+
+| งาน | บัญชี | รุ่น/effort | เวลา s | input tokens | output tokens | สถานะ |
+|---|---|---|---|---|---|---|
+| B01 | yolo1 | opus/xhigh | 1117.7 | 106 | 112468 | ok |
+| B11 | cyolo1 | gpt-6-luna/medium | 83.3 | 119331 | 4230 | ok |
+| B15 | cyolo2 | gpt-6-luna/low | 55.6 | 300245 | 2193 | ok (PNG ตรวจ signature แล้ว: /workspace/plans/egov-eservice/app/public/img/logo.png) |
+| B12 | yolo2 | opus/xhigh | 913.7 | 46 | 107459 | ok |
+| B13 | yolo1 | opus/xhigh | 1233.6 | 50 | 143258 | ok |
+| B02 | cyolo1 | gpt-6-luna/medium | 186.6 | 456006 | 9563 | ok |
+| B03 | cyolo2,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 475.5 | 341866 | 51141 | ok (APPROVED รอบ 1 โดย cyolo2) |
+| B04 | yolo2 | opus/high | 377.9 | 62 | 39594 | ok |
+| B10 | yolo1 | opus/high | 278.3 | 62 | 31537 | ok |
+| B05 | yolo2 | opus/xhigh | 537.3 | 228 | 143594 | ok |
+| B06 | yolo1,yolo2 | opus/xhigh | 1475.3 | 212 | 117539 | ok |
+| B07 | yolo2 | opus/high | 331.9 | 66 | 33312 | ok |
+| B08 | cyolo1,cyolo2,yolo1,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 826.2 | 1190869 | 105903 | ok (APPROVED รอบ 2 โดย cyolo2) |
+| B09 | cyolo1,yolo2 | gpt-6-luna/xhigh,opus/xhigh | 631.6 | 835068 | 49635 | ok (APPROVED รอบ 1 โดย cyolo1) |
+| B14 | yolo2 | opus/max | 3600.9 | 548 | 2153 | failed: ไม่มีบัญชีที่พร้อมสำหรับ yolo (kind=None) |
+
+การย้ายงานลูกทีม:
+| งาน | จาก | ไป | เหตุผล | เวลา |
+|---|---|---|---|---|
+| B08#w1 | yolo2 | yolo1 | บัญชี yolo2 หยุดรับงาน: โควตา 84% ≥ เกณฑ์ 80% | 19:59:57 |
+| B14 | yolo1 |  | บัญชี yolo1 หยุดรับงาน: โควตา 98% ≥ เกณฑ์ 80% | 20:04:22 |
+
+โควตาของบัญชีที่ใช้:
+| บัญชี | โควตาล่าสุด |
+|---|---|
+| cyolo1 | week 3% (ข้อมูล 2026-11-11 10:49) |
+| cyolo2 | week 6% (ข้อมูล 2026-11-15 19:27) |
+| yolo1 | session 100% · week 43% (ข้อมูล 2026-11-15 23:05) |
+| yolo2 | session 80% · week 56% (ข้อมูล 2026-11-15 23:05) |
+[2026-11-15 23:05:25] ยังไม่ครบ: B14:failed
+[2026-11-15 23:05:25] resume ครบ 3 ครั้งแล้ว หยุด · ให้คนตรวจสาเหตุ
+  ⚠ มี 15 บล็อก (กติกาแนะนำ 6–14 บล็อกสำหรับโจทย์จริง)
+OK REPORT /workspace/plans/egov-eservice/REPORT.md · /workspace/plans/egov-eservice/gantt-actual.png · /workspace/plans/egov-eservice/compare.png
+  tokens บล็อก 4,774,005 · ledger 4,774,005 · เสร็จ 14/15 · k ใหม่ {'yolo': 0.6427, 'cyolo': 0.1721, 'review': 0.5925, 'image': 0.1244}

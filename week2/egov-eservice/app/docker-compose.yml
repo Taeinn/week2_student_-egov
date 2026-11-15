@@ -1,0 +1,20 @@
+# รันคำสั่งเดียว:
+#   TEST_MODE=1 docker compose up --build            # เปิด test hook (/api/test/*)
+#   TEST_MODE=1 BUG_MODE=B03 docker compose up --build   # เปิดบั๊กตาม BUGS.md
+#   docker compose up --build                        # โหมดปกติ (/api/test/* → 404)
+# ฐานข้อมูลอยู่ที่ ./data/egov.db บนเครื่อง host (DB_PATH ใน container = /app/data/egov.db)
+services:
+  web:
+    build: .
+    image: egov-eservice:latest
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: "3000"
+      TEST_MODE: "${TEST_MODE:-}"
+      BUG_MODE: "${BUG_MODE:-}"
+      DB_PATH: "/app/data/egov.db"
+      BASE_URL: "${BASE_URL:-http://localhost:3000}"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
