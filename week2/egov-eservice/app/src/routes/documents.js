@@ -30,6 +30,7 @@
 
 const nodeCrypto = require('crypto');
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const QRCode = require('qrcode');
 
@@ -302,12 +303,28 @@ function buildPdf(d, req) {
     const left = pdf.page.margins.left;
     const width = pdf.page.width - left - pdf.page.margins.right;
 
+    // ธีมเดียวกับเว็บ (DESIGN-visitor): แถบลาเวนเดอร์ · โลโก้ · กรอบเส้นบางมุมโค้ง · ข้อความรองสี Graphite
+    const C = { carbon: '#181925', graphite: '#666666', fog: '#e8e8e8', linen: '#fafafa', action: '#5b4fe0', lavender: '#918df6' };
+    pdf.save().rect(0, 0, pdf.page.width, 8).fill(C.action).restore();
+    pdf.save().rect(pdf.page.width * 0.6, 0, pdf.page.width * 0.4, 8).fill(C.lavender).restore();
+    const logo = path.join(__dirname, '..', '..', 'public', 'img', 'logo.png');
+    let logoOk = false;
+    try {
+      if (fs.existsSync(logo)) { pdf.image(logo, left, 40, { width: 52, height: 52 }); logoOk = true; }
+    } catch (_) { logoOk = false; }
+    const headX = logoOk ? left + 66 : left;
+    pdf.y = 44;
+
     if (hasThai) {
-      pdf.font('TH-B').fontSize(20).text('เทศบาลนครตัวอย่าง', { align: 'center' });
-      pdf.font('TH').fontSize(14).text('เอกสารดิจิทัล (ระบบ e-Service กลาง)', { align: 'center' });
-      pdf.moveDown(0.5);
-      pdf.font('TH-B').fontSize(18).text(serviceLabel(d.service_id), { align: 'center' });
+      pdf.fillColor(C.carbon).font('TH-B').fontSize(20).text('เทศบาลนครตัวอย่าง', headX, 42);
+      pdf.fillColor(C.graphite).font('TH').fontSize(13).text('เอกสารดิจิทัล (ระบบ e-Service กลาง)', headX);
+      pdf.y = 112;
+      pdf.save().moveTo(left, pdf.y).lineTo(left + width, pdf.y).lineWidth(1).strokeColor(C.fog).stroke().restore();
       pdf.moveDown(1);
+      pdf.fillColor(C.carbon).font('TH-B').fontSize(22).text(serviceLabel(d.service_id), left, pdf.y, { width });
+      pdf.moveDown(0.8);
+      const boxTop = pdf.y;
+      pdf.y = boxTop + 14;
       const rows = [
         ['เลขเอกสาร', d.doc_no],
         ['เลขคำขอ', d.case_no],
@@ -318,16 +335,21 @@ function buildPdf(d, req) {
         ['ผู้ลงนาม', d.signer],
         ['รหัสตรวจสอบ', d.verify_code],
       ];
+      const pad = 18;
       for (const [k, v] of rows) {
         const y = pdf.y;
-        pdf.font('TH-B').fontSize(14).text(k, left, y, { width: 140 });
-        pdf.font('TH').fontSize(14).text(String(v), left + 150, y, { width: width - 150 });
-        pdf.moveDown(0.3);
+        pdf.fillColor(C.graphite).font('TH').fontSize(13).text(k, left + pad, y, { width: 140 });
+        pdf.fillColor(C.carbon).font('TH-B').fontSize(14).text(String(v), left + pad + 150, y, { width: width - 150 - pad * 2 });
+        pdf.moveDown(0.35);
       }
-      pdf.moveDown(0.8);
-      pdf.font('TH').fontSize(12).text(`ตรวจสอบความถูกต้องของเอกสารได้ที่ ${url}`, left, pdf.y, { width });
+      const boxH = pdf.y - boxTop + 10;
+      pdf.save().roundedRect(left, boxTop, width, boxH, 14).lineWidth(1).strokeColor(C.fog).stroke().restore();
+      pdf.y = boxTop + boxH + 18;
+      pdf.fillColor(C.graphite).font('TH').fontSize(12).text(`ตรวจสอบความถูกต้องของเอกสารได้ที่ ${url}`, left, pdf.y, { width });
       pdf.text('ลายเซ็นดิจิทัลจำลอง (HMAC-SHA256) เพื่อการทดสอบ', { width });
+      pdf.fillColor(C.carbon);
     } else {
+      pdf.y = 112;
       // ไม่มีฟอนต์ไทย: ใช้ป้ายภาษาอังกฤษ (ข้อความไทยตรวจผ่านหน้า /verify · A-63)
       pdf.font('Helvetica-Bold').fontSize(18).text('Sample City Municipality - Digital Document', { align: 'center' });
       pdf.moveDown(1);
@@ -343,8 +365,9 @@ function buildPdf(d, req) {
 
     pdf.moveDown(0.8);
     const qrY = pdf.y;
+    pdf.save().roundedRect(left - 6, qrY - 6, 140, 140, 12).lineWidth(1).strokeColor(C.fog).stroke().restore();
     drawQr(pdf, url, left, qrY, 128);
-    pdf.y = qrY + 140;
+    pdf.y = qrY + 146;
 
     // บรรทัด ASCII ที่เครื่องอ่านได้ บรรทัดเดียว (ฟอนต์มาตรฐาน · ไม่ตัดบรรทัด)
     pdf.font('Courier').fontSize(8).fillColor('#000000');
