@@ -44,10 +44,10 @@ const isTestPath = (req) => req.path === '/api/test' || req.path.startsWith('/ap
 // ตราสำรอง (ใช้เมื่อยังไม่มี public/img/logo.png)
 const FALLBACK_LOGO_SVG = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="ตราเทศบาลนครตัวอย่าง">
-<circle cx="48" cy="48" r="46" fill="#1f3a68" stroke="#c9a227" stroke-width="4"/>
-<circle cx="48" cy="48" r="34" fill="none" stroke="#c9a227" stroke-width="2"/>
-<path d="M48 22 L66 40 H58 V66 H38 V40 H30 Z" fill="#c9a227"/>
-<rect x="44" y="50" width="8" height="16" fill="#1f3a68"/>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b4fe0"/><stop offset="1" stop-color="#918df6"/></linearGradient></defs>
+<circle cx="48" cy="48" r="46" fill="url(#g)"/>
+<path d="M48 22 L66 40 H58 V66 H38 V40 H30 Z" fill="#fff"/>
+<rect x="44" y="50" width="8" height="16" fill="#5b4fe0"/>
 </svg>`;
 
 // ---------------------------------------------------------------------------

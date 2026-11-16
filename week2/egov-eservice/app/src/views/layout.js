@@ -106,6 +106,16 @@ h1{font-size:2.25rem;font-weight:600;line-height:1.22;letter-spacing:-.03em;marg
 h2{font-size:1.4rem;font-weight:600;line-height:1.25;letter-spacing:-.02em;margin:1.4em 0 .6em}
 h3{font-size:1.1rem;font-weight:600;letter-spacing:-.015em}
 .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-card);padding:24px;margin:0 0 16px}
+.card>:first-child,.card>section>:first-child,.card>h2:first-child{margin-top:0}
+.card>:last-child,.card .table-wrap:last-child{margin-bottom:0}
+dl{margin:0}
+figure{margin:0 0 16px}
+figure img{border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff}
+dd{margin:0 0 8px}
+tbody th{background:#fff;font-weight:600}
+fieldset{border:1px solid var(--border);border-radius:var(--radius-card);padding:16px 20px;margin:0 0 16px}
+legend{font-weight:600;padding:0 6px}
+hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
 .stack>*+*{margin-top:12px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}

@@ -16,16 +16,17 @@ const NO_REFUND = 'ค่าธรรมเนียมที่ชำระแ�
 
 const PAGE_CSS = `<style>
 .kv{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:0}
-.kv dt{font-weight:600}
+.kv dt{font-weight:500;color:var(--muted)}
 .kv dd{margin:0;min-width:0}
 @media (max-width:480px){.kv{grid-template-columns:1fr}.kv dd{margin:0 0 6px}}
-.timeline{list-style:none;margin:0;padding:0;border-left:3px solid var(--border)}
-.timeline li{margin:0 0 8px;padding:0 0 0 12px}
-.timeline time{font-weight:600;margin-right:6px}
+.timeline{list-style:none;margin:0;padding:0 0 0 4px;border-left:2px solid var(--border)}
+.timeline li{position:relative;margin:0 0 12px;padding:0 0 0 18px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--color-lavender);box-shadow:0 0 0 3px #fff}
+.timeline time{font-weight:600;margin-right:8px}
 .doc-list{list-style:none;margin:0;padding:0}
-.doc-list li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border:1px solid var(--border);border-radius:6px;padding:6px 10px;margin:0 0 6px;background:#fff}
-dialog{border:2px solid var(--navy);border-radius:8px;max-width:min(92vw,480px);padding:16px}
-dialog::backdrop{background:rgba(0,0,0,.45)}
+.doc-list li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:0 0 8px;background:#fff}
+dialog{border:1px solid var(--border);border-radius:16px;max-width:min(92vw,480px);padding:24px;box-shadow:var(--shadow-panel)}
+dialog::backdrop{background:rgba(24,25,37,.4);backdrop-filter:blur(2px)}
 .fix-form input[type=file]{width:100%}
 </style>`;
 

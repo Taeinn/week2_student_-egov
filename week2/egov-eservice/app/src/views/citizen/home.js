@@ -11,8 +11,11 @@ const { SERVICES } = require('../../lib/constants');
 
 const PAGE_CSS = `<style>
 .svc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
-.svc-card{border:1px solid var(--border);border-radius:8px;padding:12px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.svc-card{border:1px solid var(--border);border-radius:16px;padding:20px;background:#fff;display:flex;flex-direction:column;gap:10px;transition:box-shadow .15s,border-color .15s}
+.svc-card:hover{border-color:#d6d4fc;box-shadow:var(--shadow-panel)}
 .svc-card h3{margin:0;font-size:1.05rem}
+.svc-card h3::before{content:"";display:block;width:36px;height:36px;margin:0 0 12px;border-radius:50%;background:linear-gradient(135deg,var(--action),var(--color-lavender))}
+.svc-card .btn{margin-top:auto}
 .svc-card p{margin:0}
 .svc-card .btn{align-self:flex-start}
 .actions{display:flex;flex-wrap:wrap;gap:6px}

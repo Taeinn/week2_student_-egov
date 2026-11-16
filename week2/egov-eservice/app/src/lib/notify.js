@@ -274,11 +274,11 @@ function countFor(userId) {
 const PAGE_CSS = `<style>
 .noti-list{list-style:none;margin:0;padding:0;max-width:760px}
 .noti-list li{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between;
-  padding:10px 14px;margin:0 0 8px;border:1px solid #d5dbe5;border-left-width:6px;border-radius:6px;background:#fff}
-.noti-list li.lv-near{border-left-color:#b7791f;background:#fffaf0}
-.noti-list li.lv-overdue{border-left-color:#b42318;background:#fef3f2}
-.noti-list li a{font-weight:600}
-.noti-list li time{color:#475467;font-size:.92em}
+  padding:14px 18px;margin:0 0 10px;border:1px solid var(--border);border-left-width:4px;border-radius:12px;background:#fff}
+.noti-list li.lv-near{border-left-color:var(--color-amber)}
+.noti-list li.lv-overdue{border-left-color:#e5484d}
+.noti-list li a{font-weight:500}
+.noti-list li time{color:var(--muted);font-size:.88em}
 </style>`;
 
 function renderItems(items) {

@@ -14,21 +14,21 @@
 const { esc, fmtMoney } = require('../../lib/format');
 
 const PAGE_CSS = `<style>
-.wizard-step{display:inline-block;font-weight:700;background:#e9eef7;color:var(--navy-dark);border-radius:999px;padding:2px 12px;margin:0 0 12px}
+.wizard-step{display:inline-block;font-size:.85rem;font-weight:500;background:#efeefe;color:#3f35b0;border:1px solid #d6d4fc;border-radius:999px;padding:3px 12px;margin:0 0 16px}
 .wizard section[hidden]{display:none}
 .fee-line{font-size:1.15rem}
 .fee-line strong{font-size:1.3rem}
 .file-list{list-style:none;margin:0;padding:0}
-.file-list li{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between;border:1px solid var(--border);border-radius:6px;padding:6px 10px;margin:0 0 6px;background:#fff}
+.file-list li{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:0 0 8px;background:#fff}
 .upload-grid input[type=file]{width:100%}
 .qr{margin:0 0 12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.qr img{width:200px;height:200px;border:1px solid var(--border);background:#fff}
+.qr img{width:200px;height:200px;border:1px solid var(--border);border-radius:16px;padding:8px;background:#fff}
 .receipt dl,.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:0 0 12px}
-.receipt dt,.kv dt{font-weight:600}
+.receipt dt,.kv dt{font-weight:500;color:var(--muted)}
 .receipt dd,.kv dd{margin:0}
-.pay-PENDING{background:#fff4cc;color:#5c4400;border-color:#e5c95c}
-.pay-PAID{background:#e3f4e8;color:#1d5e33;border-color:#9ccfaa}
-.pay-EXPIRED{background:#fde2e1;color:#8a1c1c;border-color:#eba9a7}
+.pay-PENDING{background:#fff4dc;color:#7a4b00;border-color:#ffdc99}
+.pay-PAID{background:var(--color-mint-wash);color:#16642c;border-color:#b5e5c1}
+.pay-EXPIRED{background:#fef1f1;color:#8f1a1f;border-color:#f3c4c6}
 </style>`;
 
 /** ฝัง JSON ใน <script type="application/json"> อย่างปลอดภัย */
