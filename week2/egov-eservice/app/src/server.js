@@ -176,6 +176,20 @@ function createApp() {
   app.disable('x-powered-by');
   app.set('trust proxy', true);
 
+  // 0. security headers (ทุก response) · หน้าเว็บใช้ <style>/<script> ฝังในหน้า จึงต้องมี 'unsafe-inline'
+  app.use((req, res, next) => {
+    res.set('X-Content-Type-Options', 'nosniff');
+    res.set('X-Frame-Options', 'DENY');
+    res.set('Referrer-Policy', 'same-origin');
+    res.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    res.set(
+      'Content-Security-Policy',
+      "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; " +
+        "object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    );
+    next();
+  });
+
   // 1. health
   app.get('/api/health', (req, res) => {
     res.set('Cache-Control', 'no-store');

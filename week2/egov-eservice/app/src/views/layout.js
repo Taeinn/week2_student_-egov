@@ -64,7 +64,7 @@ const CSS = `
 --muted:var(--color-graphite);--border:var(--color-fog);--danger:#c0262d;--ok:#1a7f37}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:"Inter","Noto Sans Thai","Leelawadee UI","Segoe UI",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;letter-spacing:-.01em;color:var(--text);background:var(--color-paper);overflow-wrap:anywhere}
+body{margin:0;font-family:"Inter","Noto Sans Thai","Leelawadee UI","Segoe UI",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;letter-spacing:-.01em;color:var(--text);background:var(--color-paper);overflow-wrap:anywhere;display:flex;flex-direction:column;min-height:100vh}
 a{color:var(--action);text-underline-offset:3px}
 a:hover{color:var(--action-dark)}
 :focus-visible{outline:3px solid var(--color-lavender);outline-offset:2px}
@@ -100,7 +100,8 @@ img,svg,canvas,video{max-width:100%;height:auto}
 .btn:disabled,.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
 .app-header .btn{padding:5px 14px;background:transparent;color:var(--muted);box-shadow:none}
 .app-header .btn:hover{background:var(--color-mist);color:var(--text)}
-main{display:block;max-width:1200px;margin:0 auto;padding:32px 16px}
+main{display:block;flex:1 0 auto;width:100%;max-width:1200px;margin:0 auto;padding:32px 16px}
+main>h1+p.muted{margin-top:-.6em;margin-bottom:1.4em}
 main:focus{outline:none}
 h1{font-size:2.25rem;font-weight:600;line-height:1.22;letter-spacing:-.03em;margin:.2em 0 .7em;color:var(--text)}
 h2{font-size:1.4rem;font-weight:600;line-height:1.25;letter-spacing:-.02em;margin:1.4em 0 .6em}
@@ -109,10 +110,32 @@ h3{font-size:1.1rem;font-weight:600;letter-spacing:-.015em}
 .card>:first-child,.card>section>:first-child,.card>h2:first-child{margin-top:0}
 .card>:last-child,.card .table-wrap:last-child{margin-bottom:0}
 dl{margin:0}
+dl.grid{gap:16px 24px}
+dl.grid dt{font-size:.82rem;font-weight:500;color:var(--muted);margin:0 0 2px}
+dl.grid dd{margin:0;font-weight:500}
+.timeline,ol[data-testid="case-timeline"]{list-style:none;margin:0;padding:0 0 0 4px;border-left:2px solid var(--border)}
+.timeline li,ol[data-testid="case-timeline"] li{position:relative;margin:0 0 12px;padding:0 0 0 18px}
+.timeline li:last-child,ol[data-testid="case-timeline"] li:last-child{margin-bottom:0}
+.timeline li::before,ol[data-testid="case-timeline"] li::before{content:"";position:absolute;left:-7px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--color-lavender);box-shadow:0 0 0 3px #fff}
+.timeline time,ol[data-testid="case-timeline"] time{font-weight:600}
+.doc-list{list-style:none;margin:0;padding:0}
+.doc-list li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:0 0 8px;background:#fff}
+.doc-list li:last-child{margin-bottom:0}
+.doc-list.doc-inline li{justify-content:flex-start}
+.doc-list a[download]{font-weight:500}
+.empty,p[data-testid="noti-empty"]{margin:0;padding:28px 16px;text-align:center;color:var(--muted);border:1px dashed #d4d4dc;border-radius:var(--radius-card);background:var(--color-linen)}
+td>[data-testid="queue-empty"]{padding:24px 0;text-align:center;color:var(--muted)}
+.error-page{max-width:560px;margin:32px auto;text-align:center}
+.error-page .alert{text-align:left}
+.error-code{display:inline-block;font-size:.85rem;font-weight:600;letter-spacing:.04em;color:#3f35b0;background:#efeefe;border:1px solid #d6d4fc;border-radius:var(--radius-pill);padding:2px 12px;margin:0 0 12px}
+section.card>.row,section.card>.stack{margin-bottom:12px}
+section.card>.row:last-child,section.card>.stack:last-child{margin-bottom:0}
+[aria-labelledby="h-actions"]>.row{display:inline-flex;vertical-align:top;margin:0 8px 8px 0}
+[aria-labelledby="h-actions"]>.stack{padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--color-linen)}
 figure{margin:0 0 16px}
 figure img{border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff}
 dd{margin:0 0 8px}
-tbody th{background:#fff;font-weight:600}
+tbody th{background:transparent;font-weight:600}
 fieldset{border:1px solid var(--border);border-radius:var(--radius-card);padding:16px 20px;margin:0 0 16px}
 legend{font-weight:600;padding:0 6px}
 hr{border:none;border-top:1px solid var(--border);margin:24px 0}
@@ -120,9 +143,15 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 .stack>*+*{margin-top:12px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .muted{color:var(--muted)}
-.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius-table);background:#fff;margin:0 0 16px}
-table{border-collapse:collapse;width:100%;background:#fff;font-size:.92rem}
-th,td{border-bottom:1px solid var(--border);padding:10px 14px;text-align:left;vertical-align:top;overflow-wrap:normal}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius-table);margin:0 0 16px;background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0)) left center/40px 100% no-repeat local,linear-gradient(to left,#fff 30%,rgba(255,255,255,0)) right center/40px 100% no-repeat local,linear-gradient(to right,rgba(24,25,37,.10),rgba(24,25,37,0)) left center/12px 100% no-repeat scroll,linear-gradient(to left,rgba(24,25,37,.10),rgba(24,25,37,0)) right center/12px 100% no-repeat scroll,#fff}
+table{border-collapse:collapse;width:100%;background:transparent;font-size:.92rem}
+th,td{border-bottom:1px solid var(--border);padding:10px 14px;text-align:left;vertical-align:middle;overflow-wrap:normal}
+td .btn{padding:6px 14px;font-size:.88rem}
+td .btn+.btn{margin-left:4px}
+td .btn-danger{background:#fff;color:var(--danger);box-shadow:inset 0 0 0 1px #f3c4c6}
+td .btn-danger:hover{background:#fef1f1;color:#9b1c22}
+td p{margin:0}
+caption{caption-side:top;text-align:left}
 .table-wrap table{min-width:720px}
 .table-wrap tr:last-child td{border-bottom:none}
 table:not(.table-wrap table){border:1px solid var(--border)}
@@ -135,7 +164,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--action);outline:3px s
 input[type=checkbox],input[type=radio]{width:1.1em;height:1.1em;accent-color:var(--action)}
 ::placeholder{color:#767680}
 .form-row{display:flex;flex-direction:column;gap:6px;margin:0 0 16px}
-.field-error{color:var(--danger);font-weight:500}
+.form-row input[type=number]{max-width:220px}
+form.row{margin:0 0 16px}
+input[type=file]{padding:6px;border-style:dashed;border-color:#b9b9c6;background:var(--color-linen);color:var(--muted);cursor:pointer;width:100%}
+input[type=file]::file-selector-button{font:inherit;font-size:.88rem;font-weight:500;margin-right:12px;padding:6px 14px;border:none;border-radius:var(--radius-pill);background:#fff;color:var(--text);box-shadow:var(--shadow-subtle-2);cursor:pointer}
+input[type=file]:hover{border-color:var(--action)}
+input[readonly]{background:var(--color-mist);color:var(--muted)}
+textarea{width:100%;min-height:88px;resize:vertical}
+p.field-error{margin:4px 0}
+.field-error{color:var(--danger);font-weight:500;font-size:.92rem}
 .alert{border-radius:12px;padding:12px 16px;margin:0 0 16px;border:1px solid}
 .alert-error{background:#fef1f1;border-color:#f3c4c6;color:#8f1a1f}
 .alert-success{background:var(--color-mint-wash);border-color:#b5e5c1;color:#14532d}
@@ -152,9 +189,11 @@ input[type=checkbox],input[type=radio]{width:1.1em;height:1.1em;accent-color:var
 .lv-paused{background:var(--color-mist);color:#3a3b47;border-color:var(--border)}
 .lv-closed{background:var(--color-fog);color:#333;border-color:#d4d4d4}
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.app-footer{max-width:1200px;margin:48px auto 0;padding:20px 16px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
+.app-footer{width:100%;max-width:1200px;margin:48px auto 0;padding:20px 16px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
 #flash:empty{display:none}
-@media (max-width:600px){.app-header{position:static}.app-header .inner{padding:8px}.brand img{width:34px;height:34px}main{padding:16px 10px}h1{font-size:1.6rem}.card{padding:16px}th,td{padding:8px 10px}.main-nav ul{border-radius:16px}}
+@media (max-width:600px){.app-header{position:static}.app-header .inner{padding:8px}.brand img{width:34px;height:34px}main{padding:16px 10px}h1{font-size:1.6rem}.card{padding:16px}th,td{padding:8px 10px}.main-nav ul{border-radius:16px}.user-box{width:100%;font-size:.85rem}.user-box [data-testid="user-name"]{flex:1 1 auto;min-width:0}.app-footer{margin-top:24px}dl.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{.app-header,.app-footer,.skip-link,.btn{display:none!important}main{padding:0}}
 `;
 
 const CLIENT_JS = `
@@ -204,7 +243,10 @@ function renderNav(user, currentPath) {
   if (!items.length) return '';
   const lis = items
     .map((n) => {
-      const cur = currentPath === n.href || (currentPath || '').startsWith(`${n.href}/`) ? ' aria-current="page"' : '';
+      // หน้าย่อยของเมนู (เช่น /officer/cases/… ของคิวงาน) ให้เมนูต้นทางยังถูกเลือกอยู่
+      const p = currentPath || '';
+      const sub = (n.testid === 'nav-my-cases' && p.startsWith('/citizen/')) || (n.testid === 'nav-queue' && p.startsWith('/officer/'));
+      const cur = p === n.href || p.startsWith(`${n.href}/`) || sub ? ' aria-current="page"' : '';
       return `<li><a data-testid="${n.testid}" href="${n.href}"${cur}>${esc(n.label)}</a></li>`;
     })
     .join('');
@@ -251,6 +293,7 @@ function renderPage(req, opts = {}) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5b4fe0">
 <title>${esc(title)}</title>
 <link rel="icon" href="/img/logo.png">
 <style>${CSS}</style>
@@ -289,7 +332,7 @@ function sendForbidden(req, res, message = PAGE_MESSAGES.FORBIDDEN_PAGE) {
   return sendPage(req, res, {
     status: 403,
     title: 'ไม่มีสิทธิ์เข้าถึง',
-    body: `<h1>ไม่มีสิทธิ์เข้าถึง</h1><p class="alert alert-error" data-testid="forbidden-msg">${esc(message)}</p>`,
+    body: `<div class="error-page"><p class="error-code" aria-hidden="true">403</p><h1>ไม่มีสิทธิ์เข้าถึง</h1><p class="alert alert-error" data-testid="forbidden-msg">${esc(message)}</p><p><a class="btn btn-secondary" href="/">กลับหน้าหลัก</a></p></div>`,
   });
 }
 
@@ -298,7 +341,7 @@ function sendNotFound(req, res, message = PAGE_MESSAGES.NOT_FOUND_CASE) {
   return sendPage(req, res, {
     status: 404,
     title: 'ไม่พบข้อมูล',
-    body: `<h1>ไม่พบข้อมูล</h1><p class="alert alert-error" data-testid="not-found-msg">${esc(message)}</p>`,
+    body: `<div class="error-page"><p class="error-code" aria-hidden="true">404</p><h1>ไม่พบข้อมูล</h1><p class="alert alert-error" data-testid="not-found-msg">${esc(message)}</p><p><a class="btn btn-secondary" href="/">กลับหน้าหลัก</a></p></div>`,
   });
 }
 

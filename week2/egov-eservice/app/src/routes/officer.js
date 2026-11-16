@@ -815,7 +815,7 @@ ${actions.length ? actions.join('\n') : '<p class="muted">ไม่มีรา�
     .join('\n');
   const filesHtml = `<section class="card" aria-labelledby="h-files">
 <h2 id="h-files">เอกสารแนบ</h2>
-${files.length ? `<ul>${fileItems}</ul>` : '<p class="muted">ไม่มีเอกสารแนบ</p>'}
+${files.length ? `<ul class="doc-list doc-inline">${fileItems}</ul>` : '<p class="muted">ไม่มีเอกสารแนบ</p>'}
 </section>`;
 
   // ── เอกสารดิจิทัล (หลังออกเอกสาร)

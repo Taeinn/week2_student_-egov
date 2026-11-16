@@ -13,13 +13,29 @@ const PAGE_CSS = `<style>
 .svc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
 .svc-card{border:1px solid var(--border);border-radius:16px;padding:20px;background:#fff;display:flex;flex-direction:column;gap:10px;transition:box-shadow .15s,border-color .15s}
 .svc-card:hover{border-color:#d6d4fc;box-shadow:var(--shadow-panel)}
-.svc-card h3{margin:0;font-size:1.05rem}
-.svc-card h3::before{content:"";display:block;width:36px;height:36px;margin:0 0 12px;border-radius:50%;background:linear-gradient(135deg,var(--action),var(--color-lavender))}
+.svc-card h3{margin:0;font-size:1.1rem;line-height:1.35}
+.svc-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--action),var(--color-lavender))}
+.svc-card:nth-child(2) .svc-icon{background:linear-gradient(135deg,#1f63e0,var(--color-sky))}
+.svc-card:nth-child(3) .svc-icon{background:linear-gradient(135deg,#b3307f,var(--color-magenta))}
+.svc-icon svg{width:20px;height:20px}
+.svc-code{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--muted)}
+.svc-fee{font-weight:500}
+.svc-meta{font-size:.88rem;color:var(--muted)}
+.home-section{margin:0 0 40px}
+.home-section>h2{margin-top:0}
+.home-lead{color:var(--muted);margin:-.6em 0 2em}
 .svc-card .btn{margin-top:auto}
 .svc-card p{margin:0}
 .svc-card .btn{align-self:flex-start}
 .actions{display:flex;flex-wrap:wrap;gap:6px}
 </style>`;
+
+const SVG = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICONS = {
+  'SV-01': SVG('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>'),
+  'SV-02': SVG('<path d="M4 9l1.5-5h13L20 9M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 20v-6h6v6"/>'),
+  'SV-03': SVG('<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>'),
+};
 
 /** ข้อความค่าธรรมเนียม/SLA ของบริการ (จากตาราง services ที่ admin แก้ได้) */
 function feeText(svc) {
@@ -35,9 +51,10 @@ function serviceCards(services) {
       const meta = SERVICES[s.id] || {};
       const docs = (meta.docs || []).map((d) => `${d.name}${d.required ? ' ✱' : ''}`).join(' · ');
       return `<li class="svc-card">
-<h3>${esc(s.id)} ${esc(meta.name || s.name)}</h3>
-<p>ค่าธรรมเนียม: ${esc(feeText(s))}</p>
-<p class="muted">ระยะเวลา ${esc(s.sla_days)} วันทำการ · เอกสาร: ${esc(docs)}</p>
+<span class="svc-icon" aria-hidden="true">${ICONS[s.id] || ICONS['SV-01']}</span>
+<h3><span class="svc-code">${esc(s.id)}</span><br>${esc(meta.name || s.name)}</h3>
+<p class="svc-fee">ค่าธรรมเนียม: ${esc(feeText(s))}</p>
+<p class="svc-meta">ระยะเวลา ${esc(s.sla_days)} วันทำการ<br>เอกสาร: ${esc(docs)}</p>
 <a class="btn btn-primary" data-testid="start-service-${esc(s.id)}" href="/citizen/new/${esc(s.id)}">ยื่นคำขอ ${esc(s.id)}</a>
 </li>`;
     })
@@ -46,7 +63,7 @@ function serviceCards(services) {
 }
 
 function casesTable(cases) {
-  if (!cases.length) return '<p class="muted">ยังไม่มีคำขอที่ยื่นแล้ว</p>';
+  if (!cases.length) return '<p class="empty">ยังไม่มีคำขอที่ยื่นแล้ว</p>';
   const rows = cases
     .map(
       (c) => `<tr data-testid="my-case-row" data-case-no="${esc(c.caseNo)}" data-status="${esc(c.status)}">
@@ -65,7 +82,7 @@ function casesTable(cases) {
 }
 
 function draftsTable(drafts) {
-  if (!drafts.length) return '<p class="muted">ไม่มีร่างหรือคำขอที่รอชำระเงิน</p>';
+  if (!drafts.length) return '<p class="empty">ไม่มีร่างหรือคำขอที่รอชำระเงิน</p>';
   const rows = drafts
     .map(
       (d) => `<tr data-testid="my-draft-row" data-draft-id="${esc(d.draftId)}" data-status="${esc(d.status)}">
@@ -111,15 +128,16 @@ const SCRIPT = `<script>
  */
 function renderHome(o) {
   const body = `<h1 data-testid="citizen-welcome">สวัสดี ${esc(o.user.name || '')}</h1>
-<section class="card" aria-labelledby="svc-heading">
+<p class="home-lead">ยื่นคำขอ ติดตามสถานะ และดาวน์โหลดเอกสารดิจิทัลได้จากหน้านี้</p>
+<section class="home-section" aria-labelledby="svc-heading">
 <h2 id="svc-heading">เริ่มยื่นคำขอ</h2>
 ${serviceCards(o.services)}
 </section>
-<section class="card" aria-labelledby="drafts-heading">
+<section class="home-section" aria-labelledby="drafts-heading">
 <h2 id="drafts-heading">ร่างและรอชำระเงิน</h2>
 ${draftsTable(o.drafts)}
 </section>
-<section class="card" aria-labelledby="cases-heading">
+<section class="home-section" aria-labelledby="cases-heading">
 <h2 id="cases-heading">คำขอของฉัน</h2>
 ${casesTable(o.cases)}
 </section>`;

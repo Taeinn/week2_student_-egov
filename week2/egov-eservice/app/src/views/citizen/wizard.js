@@ -15,9 +15,26 @@ const { esc, fmtMoney } = require('../../lib/format');
 
 const PAGE_CSS = `<style>
 .wizard-step{display:inline-block;font-size:.85rem;font-weight:500;background:#efeefe;color:#3f35b0;border:1px solid #d6d4fc;border-radius:999px;padding:3px 12px;margin:0 0 16px}
+.wizard-shell{max-width:760px}
 .wizard section[hidden]{display:none}
-.fee-line{font-size:1.15rem}
-.fee-line strong{font-size:1.3rem}
+.wizard h2{margin-top:0}
+.wizard .row{margin-top:20px}
+.stepper{list-style:none;display:flex;margin:0 0 12px;padding:0;gap:0}
+.stepper li{flex:1;display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:500;color:var(--muted);min-width:0}
+.stepper li::after{content:"";flex:1;height:2px;background:var(--border);margin:0 10px;border-radius:2px}
+.stepper li:last-child{flex:0 0 auto}
+.stepper li:last-child::after{display:none}
+.stepper .dot{flex:none;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--color-mist);border:1px solid var(--border);color:var(--muted);font-weight:600}
+.stepper[data-step="1"] li:nth-child(1),.stepper[data-step="2"] li:nth-child(2),.stepper[data-step="3"] li:nth-child(3){color:var(--text)}
+.stepper[data-step="1"] li:nth-child(1) .dot,.stepper[data-step="2"] li:nth-child(2) .dot,.stepper[data-step="3"] li:nth-child(3) .dot{background:var(--action);border-color:var(--action);color:#fff;box-shadow:0 0 0 4px #efeefe}
+.stepper[data-step="2"] li:nth-child(1) .dot,.stepper[data-step="3"] li:nth-child(-n+2) .dot{background:#efeefe;border-color:#d6d4fc;color:#3f35b0}
+.stepper[data-step="2"] li:nth-child(1)::after,.stepper[data-step="3"] li:nth-child(-n+2)::after{background:var(--color-lavender)}
+@media (max-width:480px){.stepper .lbl{display:none}.stepper li:nth-child(1) .lbl{display:none}}
+.fee-line{font-size:1rem;margin:16px 0 0;padding:14px 18px;border:1px solid var(--border);border-radius:12px;background:var(--color-linen);display:flex;align-items:baseline;justify-content:space-between;gap:12px;max-width:420px}
+.fee-line strong{font-size:1.6rem;font-weight:600;letter-spacing:-.03em}
+#draft-box{color:var(--muted);font-size:.92rem;margin:12px 0 0}
+#payment-box>.btn{margin-right:8px}
+.receipt{margin-top:16px;background:var(--color-linen)}
 .file-list{list-style:none;margin:0;padding:0}
 .file-list li{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:0 0 8px;background:#fff}
 .upload-grid input[type=file]{width:100%}
@@ -306,7 +323,7 @@ const CLIENT = `
           + '<button type="button" class="btn btn-primary" data-testid="regenerate-qr-btn" id="regenerate-qr-btn">สร้าง QR ใหม่</button>';
       } else if (s === 'PENDING') {
         h += '<p class="muted">ชำระผ่านแอปธนาคารแล้วกด “ตรวจสอบการชำระเงิน”</p>'
-          + '<button type="button" class="btn" data-testid="refresh-payment-btn" id="refresh-payment-btn">ตรวจสอบการชำระเงิน</button>';
+          + '<button type="button" class="btn btn-primary" data-testid="refresh-payment-btn" id="refresh-payment-btn">ตรวจสอบการชำระเงิน</button>';
       } else if (s === 'PAID') {
         h += '<div class="card receipt"><h3>ใบเสร็จรับเงิน (ส่งคำขอแล้ว)</h3><dl>'
           + '<dt>เลขคำขอ</dt><dd data-testid="submitted-case-no">' + esc(p.caseNo) + '</dd>'
@@ -369,6 +386,7 @@ const CLIENT = `
     st.step = n;
     [1, 2, 3].forEach(function(i){ byId('step-' + i).hidden = (i !== n); });
     tid('wizard-step').textContent = STEP_TEXT[n];
+    var sp = byId('stepper'); if (sp) sp.setAttribute('data-step', String(n));
     if (n === 2) renderFiles();
     if (n === 3) renderPayment();
     if (focus) { var h = byId('step-' + n + '-h'); if (h) h.focus(); }
@@ -397,11 +415,18 @@ function renderWizard(o) {
   const step = o.clientData.initialStep;
   const stepText = { 1: '1/3 กรอกข้อมูล', 2: '2/3 แนบเอกสาร', 3: '3/3 ชำระเงิน' }[step];
   const body = `<h1>ยื่นคำขอ: <span data-testid="service-name">${esc(o.service.name)}</span> <span class="muted">(${esc(o.service.id)})</span></h1>
+<div class="wizard-shell">
+<ol class="stepper" id="stepper" data-step="${step}" aria-hidden="true">
+<li><span class="dot">1</span><span class="lbl">กรอกข้อมูล</span></li>
+<li><span class="dot">2</span><span class="lbl">แนบเอกสาร</span></li>
+<li><span class="dot">3</span><span class="lbl">ชำระเงิน</span></li>
+</ol>
 <p class="wizard-step" data-testid="wizard-step" aria-live="polite">${esc(stepText)}</p>
-<div class="wizard">
+<div class="wizard card">
 ${step1Html(o)}
 ${step2Html(o)}
 ${step3Html(o)}
+</div>
 </div>
 <p><a href="/citizen">กลับไปหน้าคำขอของฉัน</a></p>
 <script type="application/json" id="wizard-data">${jsonForScript(o.clientData)}</script>`;
