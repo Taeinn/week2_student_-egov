@@ -297,8 +297,8 @@ function renderDashboard(period, service, d) {
 <style>
 .kpi-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
 .kpi{margin:0;display:flex;flex-direction:column;gap:2px}
-.kpi-label{font-size:1rem;margin:0;color:#162a4c}
-.kpi-value{font-size:2rem;font-weight:700;margin:0;line-height:1.2;color:#1a1a1a}
+.kpi-label{font-size:.85rem;font-weight:500;margin:0;color:var(--muted)}
+.kpi-value{font-size:2.25rem;font-weight:600;letter-spacing:-.03em;margin:4px 0;line-height:1.1;color:var(--text)}
 .kpi-hint{font-size:.85rem;margin:0}
 .dash-filter{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end}
 .dash-filter .form-row{margin:0;min-width:min(100%,220px)}

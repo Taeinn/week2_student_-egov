@@ -166,6 +166,7 @@ cd test-report && python3 ../scripts/make-gifs.py /workspace/egov-brief/TEST-PLA
 | แผน v2 | 15 พ.ย. | ย้ายงานตรรกะจาก luna → Claude · เพิ่ม image · agent 6 | luna ฟรีโควตาน้อย/อ่อนตรรกะ | 123.8 นาที (แผน) | 98.7 นาที (แผน) · จริง 217.6 นาที (รวมรอโควตา ≈ 90 นาที) | ACCEPT: luna ใช้แค่ ≈ 0.5M ไม่หมดโควตา · งาน luna ผ่านทุกบล็อก · ผู้ตรวจ luna จับให้ B08 แก้รอบ 2 |
 | เว็บ r0→r1 | 15 พ.ย. | W1 W2 (เว็บ) · T2 (test) | TC-DASH-03 ล้ม | 50/51 | 51/51 | ACCEPT |
 | test r1→r2 | 15 พ.ย. | T1 (TC-QUEUE-02 ตรวจ HTTP) | B08 ล้มเพราะหา element ไม่เจอ ⚠️ | 12/12 แต่ B08 ⚠️ | 12/12 ✅ ทุกตัวล้มด้วยค่าต่าง | ACCEPT |
+| UI theme | 16 พ.ย. | ธีม "white engineering blueprint" (DESIGN-visitor.md) ใน `layout.js` + แท็บ login + KPI dashboard · ตารางมือถือเลื่อนในกรอบ | ปรับหน้าตา · ตารางมือถือเดิมบีบจนตัวอักษรแตกบรรทัดละตัว | 51/51 | 51/51 × 3 รอบ (axe WCAG ผ่าน) · ไม่แตะ HTML/`data-testid` | ACCEPT |
 | autoresume v1→v2 | 16 พ.ย. | ตรวจโควตาจาก `status` ด้วย | resume เปล่า 2 ครั้งเพราะโควตา ≥ 80% | – | ยังไม่ได้ทดสอบจริง | รอทดสอบ |
 
 ## สรุปภาพรวม (สำหรับผู้ตรวจ)

@@ -291,9 +291,10 @@ router.all('/api/me', methodNotAllowed);
 
 const LOGIN_CSS = `<style>
 .auth-wrap{max-width:560px;margin:0 auto}
-.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:2px solid var(--navy);margin:0 0 16px}
-.tab{font:inherit;font-weight:600;padding:8px 14px;border:1px solid var(--border);border-bottom:none;border-radius:6px 6px 0 0;background:#eef1f6;color:var(--navy);cursor:pointer}
-.tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tabs{display:inline-flex;flex-wrap:wrap;gap:2px;padding:4px;border:1px solid var(--border);border-radius:9999px;background:var(--color-linen,#fafafa);margin:0 0 20px}
+.tab{font:inherit;font-size:.92rem;font-weight:500;padding:6px 18px;border:none;border-radius:9999px;background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{background:#fff;color:var(--text);box-shadow:var(--shadow-subtle-2),inset 0 -2px 0 var(--color-lavender,#918df6)}
 .auth-wrap input[type=text],.auth-wrap input[type=password],.auth-wrap input[type=tel],.auth-wrap input[type=email]{width:100%}
 .otp-box{margin-top:16px;padding-top:12px;border-top:1px dashed var(--border)}
 .check-row{display:flex;gap:8px;align-items:flex-start}
