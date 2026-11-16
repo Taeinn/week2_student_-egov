@@ -179,5 +179,32 @@ cd test-report && python3 ../scripts/make-gifs.py /workspace/egov-brief/TEST-PLA
 | ทีมเอเจนต์ | 15 บล็อก · 4 บัญชี (Claude 2 + Codex ฟรี 2) · 24 การเรียก · 4.77M tokens · failover อัตโนมัติ 1 ครั้ง · resume หลังโควตารีเซ็ต 1 ครั้ง |
 | การแบ่งงาน | Claude (opus) ทำตรรกะ/test · luna ทำ seed, โครง test, โลโก้ และตรวจไขว้ 3 บล็อก review · แผน vs จริงใน `REPORT.md` + `compare.png` |
 | คุณภาพ | Playwright 51/51 · BUG_MODE จับได้ 12/12 · GIF P1 43/43 · ไม่แก้ผลคาดหวังตามหน้าจอ |
-| เปิดเว็บเอง | `cd week2/egov-eservice/app && TEST_MODE=1 docker compose up --build -d` → `http://localhost:3000` |
+| เปิดเว็บเอง | ดูหัวข้อ "เปิดเว็บและรัน test บนเครื่อง" ด้านล่าง → `http://localhost:3000` |
+
+## เปิดเว็บและรัน test บนเครื่อง
+
+ทุกคำสั่งเริ่มจาก **โฟลเดอร์ root ของ repo** (`week2_student_-egov`) · ต้องเปิด Docker Desktop ก่อน · ทดสอบแล้วบน Windows 16 พ.ย. 69
+
+**PowerShell (Windows / terminal ของ VS Code)** — PowerShell ไม่รองรับรูปแบบ `TEST_MODE=1 คำสั่ง` ต้องตั้ง `$env:` ก่อน
+```powershell
+cd week2\egov-eservice\app
+$env:TEST_MODE = '1'; $env:BUG_MODE = ''        # เปิดบั๊ก: $env:BUG_MODE = 'B01'
+docker compose up --build -d --wait             # → http://localhost:3000
+# ล็อกอินประชาชน: เลขบัตร 1101700123456 · OTP 123456 · เจ้าหน้าที่: off.reg1 / Test@1234
+
+npm ci; npx playwright install chromium         # ครั้งแรกครั้งเดียว
+$env:BASE_URL = 'http://localhost:3000'; $env:DB_PATH = "$PWD\data\egov.db"
+npx playwright test                             # คาดหวัง 51 passed
+docker compose down                             # ปิดเว็บ
+```
+
+**bash (Git Bash / Linux / ใน container)**
+```bash
+cd week2/egov-eservice/app
+TEST_MODE=1 docker compose up --build -d --wait
+npm ci && npx playwright install chromium
+BASE_URL=http://localhost:3000 DB_PATH=$PWD/data/egov.db npx playwright test
+```
+
+หมายเหตุ: TC-NFR-03 ส่วน "ปิด hook" ต้องมีเว็บตัวที่สองที่ไม่ตั้ง `TEST_MODE` (`NO_TEST_MODE_BASE_URL`) · ถ้าไม่ตั้ง test จะข้ามส่วนนั้นแต่ยังผ่าน · ชุดเต็มพร้อม BUG_MODE ใช้ `scripts/bug-matrix.sh` (bash)
 | บทเรียน | แผน token เกินจริง ≈ 6 เท่า (ได้ k ใหม่ใน calib) · บล็อกรวม+ทดสอบต้อง timeout ≥ 2 ชม. · auto-resume ต้องดูเกณฑ์ 80% ของ agent-team · บัญชีฟรีเหมาะกับงานเบา/ตรวจ |
