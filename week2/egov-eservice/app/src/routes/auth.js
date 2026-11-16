@@ -296,7 +296,9 @@ const LOGIN_CSS = `<style>
 .tab:hover{color:var(--text)}
 .tab[aria-selected="true"]{background:#fff;color:var(--text);box-shadow:var(--shadow-subtle-2),inset 0 -2px 0 var(--color-lavender,#918df6)}
 .auth-wrap input[type=text],.auth-wrap input[type=password],.auth-wrap input[type=tel],.auth-wrap input[type=email]{width:100%}
-.otp-box{margin-top:16px;padding-top:12px;border-top:1px dashed var(--border)}
+.otp-box{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.auth-wrap p.field-error{margin:0}
+.auth-wrap .form-row .muted{margin:0;font-size:.88rem}
 .check-row{display:flex;gap:8px;align-items:flex-start}
 .check-row input{margin-top:.3em;flex:none}
 </style>`;

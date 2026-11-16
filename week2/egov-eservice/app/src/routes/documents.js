@@ -393,10 +393,10 @@ function renderVerifyBody(ev, code) {
       result === 'TAMPERED'
         ? 'ข้อมูลในเอกสารไม่ตรงกับลายเซ็นดิจิทัล เอกสารนี้อาจถูกแก้ไข กรุณาติดต่อเทศบาล'
         : 'ไม่พบเอกสารที่มีรหัสตรวจสอบนี้ กรุณาตรวจสอบรหัสอีกครั้ง';
-    return `<section class="card stack">${head}<p>${esc(hint)}</p></section>`;
+    return `<section class="card stack verify-card">${head}<p>${esc(hint)}</p></section>`;
   }
   const d = ev.doc;
-  return `<section class="card stack">${head}
+  return `<section class="card stack verify-card">${head}
 <div class="table-wrap"><table>
 <caption class="visually-hidden">รายละเอียดเอกสาร</caption>
 <tbody>
@@ -465,7 +465,8 @@ function renderDocSection(req, c, opts = {}) {
       : `<p><a class="btn btn-secondary" href="${esc(href)}" download="${esc(d.doc_no)}.pdf">เปิดไฟล์ PDF</a></p>`;
   return `<section class="card stack" aria-labelledby="doc-heading">
 <h2 id="doc-heading">เอกสารดิจิทัล</h2>
-<dl class="grid">
+<div class="doc-body">
+<dl class="kv">
 <div><dt>เลขเอกสาร</dt><dd data-testid="doc-no">${esc(d.doc_no)}</dd></div>
 <div><dt>รหัสตรวจสอบ</dt><dd data-testid="verify-code">${esc(d.verify_code)}</dd></div>
 <div><dt>วันออกเอกสาร</dt><dd>${timeTag(d.issued_at)}</dd></div>
@@ -473,6 +474,8 @@ function renderDocSection(req, c, opts = {}) {
 <div><dt>ผู้ลงนาม</dt><dd>${esc(d.signer)}</dd></div>
 </dl>
 <figure data-testid="doc-qr" data-url="${esc(url)}">${qrSvg(url)}<figcaption>สแกนเพื่อตรวจสอบ: <a href="/verify/${esc(encodeURIComponent(d.verify_code))}">${esc(url)}</a></figcaption></figure>
+</div>
+</div>
 ${download}
 </section>`;
 }

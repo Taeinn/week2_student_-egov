@@ -15,10 +15,6 @@ const { SV03_STEP_LABELS, DOC_LABELS } = require('../../lib/constants');
 const NO_REFUND = 'ค่าธรรมเนียมที่ชำระแล้วไม่คืน';
 
 const PAGE_CSS = `<style>
-.kv{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:0}
-.kv dt{font-weight:500;color:var(--muted)}
-.kv dd{margin:0;min-width:0}
-@media (max-width:480px){.kv{grid-template-columns:1fr}.kv dd{margin:0 0 6px}}
 .timeline{list-style:none;margin:0;padding:0 0 0 4px;border-left:2px solid var(--border)}
 .timeline li{position:relative;margin:0 0 12px;padding:0 0 0 18px}
 .timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--color-lavender);box-shadow:0 0 0 3px #fff}
@@ -27,7 +23,12 @@ const PAGE_CSS = `<style>
 .doc-list li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin:0 0 8px;background:#fff}
 dialog{border:1px solid var(--border);border-radius:16px;max-width:min(92vw,480px);padding:24px;box-shadow:var(--shadow-panel)}
 dialog::backdrop{background:rgba(24,25,37,.4);backdrop-filter:blur(2px)}
+.fix-form{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:16px}
+.fix-form>*+*{margin-top:0}
+.fix-form .form-row{margin:0;width:100%}
 .fix-form input[type=file]{width:100%}
+dialog h3{margin:0 0 8px}
+dialog .row{margin-top:16px;justify-content:flex-end}
 </style>`;
 
 function kv(label, valueHtml) {

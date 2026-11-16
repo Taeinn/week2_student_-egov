@@ -29,7 +29,9 @@ const PAGE_CSS = `<style>
 .stepper[data-step="1"] li:nth-child(1) .dot,.stepper[data-step="2"] li:nth-child(2) .dot,.stepper[data-step="3"] li:nth-child(3) .dot{background:var(--action);border-color:var(--action);color:#fff;box-shadow:0 0 0 4px #efeefe}
 .stepper[data-step="2"] li:nth-child(1) .dot,.stepper[data-step="3"] li:nth-child(-n+2) .dot{background:#efeefe;border-color:#d6d4fc;color:#3f35b0}
 .stepper[data-step="2"] li:nth-child(1)::after,.stepper[data-step="3"] li:nth-child(-n+2)::after{background:var(--color-lavender)}
-@media (max-width:480px){.stepper .lbl{display:none}.stepper li:nth-child(1) .lbl{display:none}}
+@media (max-width:480px){.stepper .lbl{display:none}.stepper{margin-bottom:10px}}
+/* จอกว้าง: ป้ายขั้นตอนอยู่ใน stepper แล้ว → ชิปข้อความเหลือไว้ให้ screen reader (aria-live) เท่านั้น */
+@media (min-width:481px){.stepper{margin-bottom:24px}.wizard-step{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
 .fee-line{font-size:1rem;margin:16px 0 0;padding:14px 18px;border:1px solid var(--border);border-radius:12px;background:var(--color-linen);display:flex;align-items:baseline;justify-content:space-between;gap:12px;max-width:420px}
 .fee-line strong{font-size:1.6rem;font-weight:600;letter-spacing:-.03em}
 #draft-box{color:var(--muted);font-size:.92rem;margin:12px 0 0}

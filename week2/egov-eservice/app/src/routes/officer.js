@@ -737,7 +737,7 @@ async function renderCasePage(req, c) {
   // ── ข้อมูลผู้ยื่น + ปิดบังเลขบัตร (BR-24)
   const applicant = `<section class="card" aria-labelledby="h-applicant">
 <h2 id="h-applicant">ผู้ยื่นคำขอ</h2>
-<dl class="grid">
+<dl class="kv">
 <div><dt>ชื่อ-สกุล</dt><dd data-testid="applicant-name">${esc(c.applicant_name)}</dd></div>
 <div><dt>เลขบัตรประชาชน</dt><dd><span data-testid="applicant-id">${esc(maskedIdOf(c))}</span> <span id="full-id-slot"></span></dd></div>
 </dl>
@@ -826,7 +826,7 @@ ${files.length ? `<ul class="doc-list doc-inline">${fileItems}</ul>` : '<p class
     const url = `${baseUrl(req)}/verify/${doc.verify_code}`;
     docHtml = `<section class="card" aria-labelledby="h-doc">
 <h2 id="h-doc">เอกสารดิจิทัล</h2>
-<dl class="grid">
+<dl class="kv">
 <div><dt>เลขเอกสาร</dt><dd data-testid="doc-no">${esc(doc.doc_no)}</dd></div>
 <div><dt>รหัสตรวจสอบ</dt><dd data-testid="verify-code">${esc(doc.verify_code)}</dd></div>
 <div><dt>ใช้ได้ถึง</dt><dd>${fmt.timeTag(doc.valid_until, null, { dateOnly: true })}</dd></div>
@@ -846,7 +846,7 @@ ${files.length ? `<ul class="doc-list doc-inline">${fileItems}</ul>` : '<p class
 <h1>คำขอ <span data-testid="case-no">${esc(c.case_no)}</span></h1>
 <section class="card" aria-labelledby="h-summary">
 <h2 id="h-summary">ข้อมูลคำขอ</h2>
-<dl class="grid">
+<dl class="kv">
 <div><dt>สถานะ</dt><dd>${layout.statusBadge(c.status, 'case-status')}</dd></div>
 <div><dt>บริการ</dt><dd data-testid="case-service">${esc(fmt.serviceLabel(c.service_id))}</dd></div>
 ${stepHtml}

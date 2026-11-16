@@ -302,6 +302,7 @@ function renderDashboard(period, service, d) {
 .kpi-hint{font-size:.85rem;margin:0}
 .dash-filter{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end}
 .dash-filter .form-row{margin:0;min-width:min(100%,220px)}
+@media (max-width:600px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kpi-grid .card{padding:14px}.kpi-value{font-size:1.8rem}.kpi-hint{font-size:.78rem}.dash-filter .form-row{flex:1 1 100%}.dash-filter select{width:100%;max-width:none}}
 td.num{text-align:right;font-variant-numeric:tabular-nums}
 </style>
 <h1>Dashboard ผู้บริหาร</h1>

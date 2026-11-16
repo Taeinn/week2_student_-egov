@@ -19,6 +19,7 @@ const PW = 'Test@1234';
 
   const snap = async (page, name) => {
     await page.waitForLoadState('networkidle').catch(() => {});
+    await page.evaluate(() => window.scrollTo(0, 0)).catch(() => {}); // กัน header แบบ sticky ไปโผล่กลางภาพ fullPage
     await page.screenshot({ path: path.join(OUT, `${name}.png`), fullPage: true });
   };
   const open = async (ctx, url, name, width = 1280) => {
@@ -68,7 +69,13 @@ const PW = 'Test@1234';
     await p.close();
   }
   await fetch(`${B}/api/test/reset`, { method: 'POST' });
-  await both(ctx, '/register', '05-register');
+  { // หน้าลงทะเบียนจริง: ล็อกอินด้วยเลขบัตรที่ยังไม่ลงทะเบียน (มานะ)
+    const rc = await browser.newContext();
+    await rc.request.post(`${B}/api/auth/thaid/start`, { data: { idNo: '5500400111221' } });
+    await rc.request.post(`${B}/api/auth/thaid/verify`, { data: { idNo: '5500400111221', otp: '123456' } });
+    await both(rc, '/register', '05-register');
+    await rc.close();
+  }
   await both(ctx, '/verify/K7M2Q9XA', '06-verify-ok');
   await both(ctx, '/verify/ZZZZZZZZ', '07-verify-notfound');
   await ctx.close();
@@ -79,6 +86,12 @@ const PW = 'Test@1234';
   await both(ctx, '/citizen/new/SV-01', '11-wizard-sv01');
   await both(ctx, '/citizen/new/SV-03', '12-wizard-sv03');
   for (const [c, n] of [['EG-2569-000005', '13-case-completed'], ['EG-2569-000017', '14-case-needfix'], ['EG-2569-000020', '15-case-overdue'], ['EG-2569-000009', '16-case-cancelled'], ['EG-2569-000030', '17-case-submitted']]) await both(ctx, `/citizen/cases/${c}`, n);
+  for (const w of [1280, 375]) { // กล่องยืนยันยกเลิกคำขอ
+    const p = await ctx.newPage(); await p.setViewportSize({ width: w, height: 860 });
+    await p.goto(`${B}/citizen/cases/EG-2569-000030`);
+    const b = p.getByTestId('cancel-case-btn'); if (await b.count()) { await b.click(); await p.waitForTimeout(300); }
+    await p.screenshot({ path: path.join(OUT, `14b-case-cancel-dialog${w < 500 ? '.m' : ''}.png`) }); await p.close();
+  }
   await both(ctx, '/citizen/cases/EG-2569-999999', '18-case-404');
   await both(ctx, '/officer/queue', '19-forbidden');
   // wizard: กรอก → ขั้น 2 → ขั้น 3 (ถ้าไปได้)
@@ -106,6 +119,14 @@ const PW = 'Test@1234';
   ctx = await staff('off.reg1');
   await both(ctx, '/officer/queue', '30-queue');
   await both(ctx, '/officer/cases/EG-2569-000020', '31-officer-case-mine');
+  // หน้าคำขอ: เปิดฟอร์มแสดงเลขเต็ม/ไม่อนุมัติ/ตีกลับ แล้วกดยืนยันว่าง ๆ ให้เห็นข้อความผิดพลาด
+  for (const w of [1280, 375]) {
+    const p = await ctx.newPage(); await p.setViewportSize({ width: w, height: 860 });
+    await p.goto(`${B}/officer/cases/EG-2569-000020`);
+    for (const t of ['show-full-id-btn', 'reject-btn', 'return-btn']) { const b = p.getByTestId(t); if (await b.count()) await b.click(); }
+    for (const t of ['unmask-submit', 'return-submit']) { const b = p.getByTestId(t); if (await b.count()) await b.click(); }
+    await p.waitForTimeout(400); await snap(p, `31b-officer-case-forms${w < 500 ? '.m' : ''}`); await p.close();
+  }
   await both(ctx, '/officer/cases/EG-2569-000024', '32-officer-case-unclaimed');
   await both(ctx, '/notifications', '33-notifications');
   await ctx.close();

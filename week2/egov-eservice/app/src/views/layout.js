@@ -143,7 +143,7 @@ hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 .stack>*+*{margin-top:12px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .muted{color:var(--muted)}
-.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius-table);margin:0 0 16px;background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0)) left center/40px 100% no-repeat local,linear-gradient(to left,#fff 30%,rgba(255,255,255,0)) right center/40px 100% no-repeat local,linear-gradient(to right,rgba(24,25,37,.10),rgba(24,25,37,0)) left center/12px 100% no-repeat scroll,linear-gradient(to left,rgba(24,25,37,.10),rgba(24,25,37,0)) right center/12px 100% no-repeat scroll,#fff}
+.table-wrap{position:relative;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius-table);margin:0 0 16px;background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0)) left center/40px 100% no-repeat local,linear-gradient(to left,#fff 30%,rgba(255,255,255,0)) right center/40px 100% no-repeat local,linear-gradient(to right,rgba(24,25,37,.10),rgba(24,25,37,0)) left center/12px 100% no-repeat scroll,linear-gradient(to left,rgba(24,25,37,.10),rgba(24,25,37,0)) right center/12px 100% no-repeat scroll,#fff}
 table{border-collapse:collapse;width:100%;background:transparent;font-size:.92rem}
 th,td{border-bottom:1px solid var(--border);padding:10px 14px;text-align:left;vertical-align:middle;overflow-wrap:normal}
 td .btn{padding:6px 14px;font-size:.88rem}
@@ -153,7 +153,7 @@ td .btn-danger:hover{background:#fef1f1;color:#9b1c22}
 td p{margin:0}
 caption{caption-side:top;text-align:left}
 .table-wrap table{min-width:720px}
-.table-wrap tr:last-child td{border-bottom:none}
+.table-wrap tr:last-child td,.table-wrap tr:last-child th{border-bottom:none}
 table:not(.table-wrap table){border:1px solid var(--border)}
 th{background:var(--color-linen);color:var(--text);font-weight:600}
 td{color:#3a3b47}
@@ -191,7 +191,25 @@ p.field-error{margin:4px 0}
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .app-footer{width:100%;max-width:1200px;margin:48px auto 0;padding:20px 16px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
 #flash:empty{display:none}
-@media (max-width:600px){.app-header{position:static}.app-header .inner{padding:8px}.brand img{width:34px;height:34px}main{padding:16px 10px}h1{font-size:1.6rem}.card{padding:16px}th,td{padding:8px 10px}.main-nav ul{border-radius:16px}.user-box{width:100%;font-size:.85rem}.user-box [data-testid="user-name"]{flex:1 1 auto;min-width:0}.app-footer{margin-top:24px}dl.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:0;align-items:baseline}
+.kv>div{display:contents}
+.kv dt{font-weight:500;color:var(--muted);margin:0}
+.kv dd{margin:0;min-width:0}
+.card dl+.row,.card dl+.stack,.card .kv+.row{margin-top:16px}
+section.card>.stack[id]{margin-top:12px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--color-linen)}
+section.card>.stack[id] .form-row{margin-bottom:0}
+.form-row input[type=text],.form-row input:not([type]),.form-row input[type=email],.form-row input[type=tel],.form-row input[type=date],.form-row select{max-width:520px;width:100%}
+button:disabled,.btn:disabled{box-shadow:none}
+.verify-card{max-width:760px;margin:0 auto}
+.verify-card .table-wrap table{min-width:0}
+.verify-card tbody th{width:36%;color:var(--muted);font-weight:500;white-space:nowrap}
+.verify-card tbody td{color:var(--text);font-weight:500}
+.doc-body{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:flex-start}
+.doc-body .kv{flex:0 1 auto}
+.doc-body figure{flex:0 1 240px;padding:12px;border:1px solid var(--border);border-radius:12px;margin:0;text-align:center;font-size:.82rem;color:var(--muted)}
+.doc-body figure svg,.doc-body figure img{display:block;margin:0 auto 6px;width:160px;height:160px}
+@media (max-width:600px){.app-header{position:static}.app-header .inner{padding:8px 10px;gap:8px}.brand img{width:34px;height:34px}.brand-text strong{font-size:.92rem}.brand-text span{font-size:.75rem}.main-nav{flex:1 1 auto;text-align:right}.main-nav ul{border-radius:16px;justify-content:flex-end;padding:3px}.main-nav a{padding:5px 11px;font-size:.85rem}.user-box{width:100%;flex-wrap:nowrap;font-size:.82rem;gap:8px;border-top:1px solid var(--border);padding-top:8px}.user-box [data-testid="user-name"]{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.user-box .bell{padding:3px 10px;white-space:nowrap}.user-box .bell-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.role-tag{white-space:nowrap}.app-header .btn{padding:3px 6px;font-size:.82rem}main{padding:16px 12px}h1{font-size:1.6rem}.card{padding:16px}th,td{padding:8px 10px}.table-wrap table{min-width:0}.table-wrap th,.table-wrap td{white-space:nowrap}.app-footer{margin-top:24px}dl.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.kv{grid-template-columns:1fr;gap:0}.kv dd{margin:0 0 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media print{.app-header,.app-footer,.skip-link,.btn{display:none!important}main{padding:0}}
 `;
@@ -260,7 +278,7 @@ function renderUserBox(user) {
   let bell = '';
   if (role === 'officer' || role === 'head') {
     const n = bellCount(user);
-    bell = `<a class="bell" data-testid="nav-bell" href="/notifications"><span aria-hidden="true">🔔</span> แจ้งเตือน <span class="bell-count" data-testid="bell-count">${n}</span></a>`;
+    bell = `<a class="bell" data-testid="nav-bell" href="/notifications"><span aria-hidden="true">🔔</span> <span class="bell-label">แจ้งเตือน</span> <span class="bell-count" data-testid="bell-count">${n}</span></a>`;
   }
   return `<div class="user-box">${bell}<span data-testid="user-name">${esc(user.name || user.username || '')}</span>`
     + `<span class="role-tag" data-testid="user-role" data-role="${esc(role)}"${deptAttr}>${esc(ROLE_LABELS[role] || role)}</span>`
