@@ -4,6 +4,37 @@ const crypto = require('../lib/crypto');
 
 const iso = (s) => `${s.replace(' ', 'T')}:00+07:00`;
 
+/**
+ * PDF 1 หน้าที่ถูกต้องตามโครงสร้าง (catalog · pages · page · font · content · xref ที่ offset ถูก)
+ * เติมช่องว่างด้วยบรรทัด comment หลัง header ให้ได้ขนาดตรง `size` ไบต์พอดี
+ */
+function samplePdf(size) {
+  const text = 'BT /F1 18 Tf 72 760 Td (Sample attachment - seed data) Tj 0 -28 Td /F1 12 Tf (egov-eservice test file) Tj ET';
+  const objs = [
+    '<</Type/Catalog/Pages 2 0 R>>',
+    '<</Type/Pages/Kids[3 0 R]/Count 1>>',
+    '<</Type/Page/Parent 2 0 R/MediaBox[0 0 595 842]/Resources<</Font<</F1 4 0 R>>>>/Contents 5 0 R>>',
+    '<</Type/Font/Subtype/Type1/BaseFont/Helvetica>>',
+    `<</Length ${text.length}>>\nstream\n${text}\nendstream`,
+  ];
+  const build = (pad) => {
+    let out = `%PDF-1.4\n${pad}`;
+    const offs = [];
+    objs.forEach((o, i) => { offs.push(out.length); out += `${i + 1} 0 obj\n${o}\nendobj\n`; });
+    const xref = out.length;
+    out += `xref\n0 ${objs.length + 1}\n0000000000 65535 f \n`;
+    offs.forEach((o) => { out += `${String(o).padStart(10, '0')} 00000 n \n`; });
+    out += `trailer\n<</Size ${objs.length + 1}/Root 1 0 R>>\nstartxref\n${xref}\n%%EOF\n`;
+    return out;
+  };
+  const base = build('').length;
+  const padLen = size - base;
+  const pad = padLen >= 2 ? `%${' '.repeat(padLen - 2)}\n` : '';
+  const buf = Buffer.from(build(pad), 'latin1');
+  if (buf.length !== size) throw new Error(`samplePdf: ได้ ${buf.length} ไบต์ ไม่ใช่ ${size}`);
+  return buf;
+}
+
 function seed(db) {
   const run = (sql, row) => db.prepare(sql).run(row);
   const users = [
@@ -97,9 +128,7 @@ function seed(db) {
   run(`INSERT INTO cases(id,draft_id,service_id,applicant_id,status,qty,fee,created_at,updated_at) VALUES (31,'DR-0001','SV-01',1,'DRAFT',2,40,?,?)`,[iso('2026-12-01 08:50'),iso('2026-12-01 08:50')]);
   run(`INSERT INTO cases(id,draft_id,service_id,applicant_id,status,qty,fee,fee_locked_at,created_at,updated_at) VALUES (32,'DR-0002','SV-02',1,'PENDING_PAYMENT',null,500,?,?,?)`,[iso('2026-12-01 08:55'),iso('2026-12-01 08:55'),iso('2026-12-01 08:55')]);
   run(`INSERT INTO payments(ref,case_id,amount,status,qr_created_at,qr_expires_at,created_at) VALUES ('PP-0001',32,500,'PENDING',?,?,?)`,[iso('2026-12-01 08:55'),iso('2026-12-01 09:10'),iso('2026-12-01 08:55')]);
-  const pdfHead = Buffer.from('%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\n');
-  const pdfTail = Buffer.from('\ntrailer<</Root 1 0 R>>\n%%EOF\n');
-  const pdf = Buffer.concat([pdfHead, Buffer.alloc(1024 - pdfHead.length - pdfTail.length, 0x20), pdfTail]);
+  const pdf = samplePdf(1024); // TEST-DATA ข้อ 4: "PDF จริงขนาดเล็ก" 1,024 ไบต์ (เปิดด้วยโปรแกรมอ่าน PDF ได้)
   const attach = db.prepare('INSERT INTO attachments(file_id,case_id,doc_key,name,mime,size,data,round,uploaded_by,uploaded_at) VALUES (?,?,?,?,?,?,?,?,?,?)');
   rows.forEach((r, i) => {
     const service = r[1]; const keys = service==='SV-01'?['id-card']:service==='SV-02'?['id-card','map']:['id-card','plan','deed'];
