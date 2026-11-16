@@ -179,8 +179,13 @@ function workloadOf(userId) {
   return db.prepare("SELECT COUNT(*) AS n FROM cases WHERE owner_id = ? AND status = 'IN_REVIEW'").get(userId).n;
 }
 
+/** เหตุผลที่กรอก (รับเฉพาะข้อความ · object/array ไม่ใช่เหตุผล ไม่ให้กลายเป็น "[object Object]") */
+function reasonText(raw) {
+  return typeof raw === 'string' || typeof raw === 'number' ? String(raw).trim() : '';
+}
+
 function reasonLength(raw) {
-  return Array.from(String(raw == null ? '' : raw).trim()).length;
+  return Array.from(reasonText(raw)).length;
 }
 
 function addEvent(caseId, type, user, fromStatus, toStatus, text, detail, step, at) {
@@ -363,7 +368,7 @@ function doReturn(user, caseNo, rawReason) {
     if (c.status !== 'IN_REVIEW') return { error: 'INVALID_STATE' };
     if (returnLimitReached(c)) return { error: 'RETURN_LIMIT' };
     if (reasonLength(rawReason) < MIN_REASON_LEN) return { error: 'REASON_TOO_SHORT' };
-    const reason = String(rawReason).trim();
+    const reason = reasonText(rawReason);
     const now = clock.nowIso();
     const deadline = rules.fixDeadline(now);
     const limitCond = isBug('B12') ? '' : ` AND return_count < ${MAX_RETURNS}`;
@@ -394,7 +399,7 @@ function doForward(user, caseNo, rawNote) {
     if (!c) return { error: 'NOT_FOUND' };
     if (!isOwner(user, c)) return { error: 'FORBIDDEN' };
     if (c.status !== 'IN_REVIEW') return { error: 'INVALID_STATE' };
-    const note = String(rawNote == null ? '' : rawNote).trim();
+    const note = reasonText(rawNote);
     const now = clock.nowIso();
     let next;
     if (c.service_id === 'SV-03' && svcStep(c) === 1) {
@@ -456,7 +461,7 @@ function doReject(user, caseNo, rawReason) {
     const err = decideError(user, c, 'reject');
     if (err) return { error: err };
     if (reasonLength(rawReason) < MIN_REASON_LEN) return { error: 'REASON_TOO_SHORT' };
-    const reason = String(rawReason).trim();
+    const reason = reasonText(rawReason);
     const now = clock.nowIso();
     const from = c.status;
     const info = db
@@ -1070,8 +1075,7 @@ router.post(
     const c = loadCase(req.params.caseNo);
     if (!c) return sendError(res, 'NOT_FOUND');
     if (!canStaffView(user, c)) return sendError(res, 'FORBIDDEN');
-    const raw = (req.body || {}).reason;
-    const reason = String(raw == null ? '' : raw).trim();
+    const reason = reasonText((req.body || {}).reason);
     if (!reason) return sendError(res, 'REASON_REQUIRED');
     const idNo = applicantIdNo(c.applicant_id);
     if (!isBug('B11')) {

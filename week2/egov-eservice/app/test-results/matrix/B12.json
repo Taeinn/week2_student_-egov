@@ -1,13 +1,13 @@
 {
   "config": {
     "argv": [
-      "/usr/bin/node",
-      "/workspace/plans/egov-eservice/app/node_modules/.bin/playwright",
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\node_modules\\@playwright\\test\\cli.js",
       "test",
       "--reporter=list,json"
     ],
-    "configFile": "/workspace/plans/egov-eservice/app/playwright.config.ts",
-    "rootDir": "/workspace/plans/egov-eservice/app/tests/specs",
+    "configFile": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\playwright.config.ts",
+    "rootDir": "C:/Project/Personal/week2_student_-egov/week2/egov-eservice/app/tests/specs",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -23,7 +23,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/workspace/plans/egov-eservice/app/test-results/artifacts",
+        "outputDir": "C:/Project/Personal/week2_student_-egov/week2/egov-eservice/app/test-results/artifacts",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -31,7 +31,7 @@
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "/workspace/plans/egov-eservice/app/tests/specs",
+        "testDir": "C:/Project/Personal/week2_student_-egov/week2/egov-eservice/app/tests/specs",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -43,15 +43,15 @@
       {
         "grep": {},
         "grepInvert": null,
-        "outputDir": "/workspace/plans/egov-eservice/app/test-results/artifacts",
+        "outputDir": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\test-results\\artifacts",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "actualWorkers": 1
         },
         "name": "chromium",
-        "testDir": "/workspace/plans/egov-eservice/app/tests/specs",
-        "snapshotDir": "/workspace/plans/egov-eservice/app/tests/specs",
+        "testDir": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs",
+        "snapshotDir": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs",
         "testIgnore": [],
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 120000,
@@ -60,9 +60,7 @@
           "headless": true,
           "trace": "off",
           "screenshot": "only-on-failure",
-          "launchOptions": {
-            "executablePath": "/ms-playwright/chromium_headless_shell-1252/chrome-headless-shell-linux64/chrome-headless-shell"
-          },
+          "launchOptions": {},
           "browserName": "chromium"
         },
         "dependencies": [],
@@ -114,7 +112,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1911,
+                  "duration": 2059,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -122,38 +120,38 @@
                   "steps": [
                     {
                       "title": "ปฏิเสธ 110170012345",
-                      "duration": 240
+                      "duration": 227
                     },
                     {
                       "title": "ปฏิเสธ 11017001234567",
-                      "duration": 180
+                      "duration": 197
                     },
                     {
                       "title": "ปฏิเสธ 1101700123457",
-                      "duration": 187
+                      "duration": 267
                     },
                     {
                       "title": "ปฏิเสธ 11017001234ab",
-                      "duration": 173
+                      "duration": 185
                     },
                     {
                       "title": "รับ 1101700123456",
-                      "duration": 201
+                      "duration": 200
                     },
                     {
                       "title": "รับ 3100600987659",
-                      "duration": 220
+                      "duration": 184
                     },
                     {
                       "title": "รับ 1909900555015",
-                      "duration": 211
+                      "duration": 178
                     },
                     {
                       "title": "รับ 5500400111221",
-                      "duration": 188
+                      "duration": 199
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:32.600Z",
+                  "startTime": "2026-11-16T10:25:16.747Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -163,7 +161,7 @@
           ],
           "id": "748a4591e2b873db0f4e-54dfafb7b684d234bef1",
           "file": "part-a.spec.ts",
-          "line": 459,
+          "line": 460,
           "column": 1
         },
         {
@@ -182,7 +180,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4958,
+                  "duration": 4501,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -190,22 +188,22 @@
                   "steps": [
                     {
                       "title": "API: ขั้น 1–8 (รหัสตอบกลับ)",
-                      "duration": 416
+                      "duration": 583
                     },
                     {
                       "title": "หน้าจอ: ขั้น 1–8",
-                      "duration": 2303
+                      "duration": 2001
                     },
                     {
                       "title": "ขั้น 9 (หน้าจอ): OTP ถูกรีเซ็ตตัวนับ",
-                      "duration": 1324
+                      "duration": 1195
                     },
                     {
                       "title": "ขั้น 9 (API)",
-                      "duration": 462
+                      "duration": 538
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:34.681Z",
+                  "startTime": "2026-11-16T10:25:19.004Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -215,7 +213,7 @@
           ],
           "id": "748a4591e2b873db0f4e-c24fa88977865e5040f4",
           "file": "part-a.spec.ts",
-          "line": 491,
+          "line": 492,
           "column": 1
         },
         {
@@ -234,7 +232,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2387,
+                  "duration": 2062,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -242,22 +240,22 @@
                   "steps": [
                     {
                       "title": "เบอร์ 081234567",
-                      "duration": 144
+                      "duration": 147
                     },
                     {
                       "title": "เบอร์ 08123456789",
-                      "duration": 68
+                      "duration": 58
                     },
                     {
                       "title": "เบอร์ 1812345678",
-                      "duration": 84
+                      "duration": 51
                     },
                     {
                       "title": "เบอร์ 08123abcde",
-                      "duration": 82
+                      "duration": 63
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:39.658Z",
+                  "startTime": "2026-11-16T10:25:23.514Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -267,7 +265,7 @@
           ],
           "id": "748a4591e2b873db0f4e-c1ae637390e954ab2d3d",
           "file": "part-a.spec.ts",
-          "line": 602,
+          "line": 603,
           "column": 1
         },
         {
@@ -286,7 +284,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5156,
+                  "duration": 3669,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -294,46 +292,46 @@
                   "steps": [
                     {
                       "title": "off.reg1",
-                      "duration": 712
+                      "duration": 398
                     },
                     {
                       "title": "off.reg2",
-                      "duration": 613
+                      "duration": 353
                     },
                     {
                       "title": "off.works1",
-                      "duration": 583
+                      "duration": 331
                     },
                     {
                       "title": "head1",
-                      "duration": 479
+                      "duration": 349
                     },
                     {
                       "title": "exec1",
-                      "duration": 574
+                      "duration": 347
                     },
                     {
                       "title": "audit1",
-                      "duration": 531
+                      "duration": 332
                     },
                     {
                       "title": "admin1",
-                      "duration": 415
+                      "duration": 455
                     },
                     {
                       "title": "ปฏิเสธ off.reg1/wrong",
-                      "duration": 264
+                      "duration": 314
                     },
                     {
                       "title": "ปฏิเสธ nobody/Test@1234",
-                      "duration": 219
+                      "duration": 170
                     },
                     {
                       "title": "ปฏิเสธ 1101700123456/Test@1234",
-                      "duration": 197
+                      "duration": 183
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:42.069Z",
+                  "startTime": "2026-11-16T10:25:25.587Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -343,7 +341,7 @@
           ],
           "id": "748a4591e2b873db0f4e-74bac0fe2418590dd5bf",
           "file": "part-a.spec.ts",
-          "line": 669,
+          "line": 670,
           "column": 1
         },
         {
@@ -362,7 +360,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3035,
+                  "duration": 2198,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -370,18 +368,18 @@
                   "steps": [
                     {
                       "title": "SV-03 area-input",
-                      "duration": 1381
+                      "duration": 989
                     },
                     {
                       "title": "SV-01 qty-input",
-                      "duration": 776
+                      "duration": 443
                     },
                     {
                       "title": "SV-02 ค่าคงที่",
-                      "duration": 162
+                      "duration": 86
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:47.246Z",
+                  "startTime": "2026-11-16T10:25:29.265Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -391,7 +389,7 @@
           ],
           "id": "748a4591e2b873db0f4e-784b0d289c61e49de569",
           "file": "part-a.spec.ts",
-          "line": 721,
+          "line": 722,
           "column": 1
         },
         {
@@ -410,12 +408,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2226,
+                  "duration": 1733,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:38:50.304Z",
+                  "startTime": "2026-11-16T10:25:31.473Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -425,7 +423,7 @@
           ],
           "id": "748a4591e2b873db0f4e-ca679e0bd4288b618232",
           "file": "part-a.spec.ts",
-          "line": 786,
+          "line": 787,
           "column": 1
         },
         {
@@ -444,7 +442,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1904,
+                  "duration": 1985,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -452,18 +450,18 @@
                   "steps": [
                     {
                       "title": "SV-02",
-                      "duration": 367
+                      "duration": 521
                     },
                     {
                       "title": "SV-03 พื้นที่ 100",
-                      "duration": 715
+                      "duration": 588
                     },
                     {
                       "title": "API: SV-03 ขาดแบบแปลน → 409 MISSING_DOCS · ครบ → 201",
-                      "duration": 221
+                      "duration": 249
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:52.546Z",
+                  "startTime": "2026-11-16T10:25:33.216Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -473,7 +471,7 @@
           ],
           "id": "748a4591e2b873db0f4e-42ab3fef590274b6ad66",
           "file": "part-a.spec.ts",
-          "line": 850,
+          "line": 851,
           "column": 1
         },
         {
@@ -492,7 +490,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5319,
+                  "duration": 4758,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -500,15 +498,15 @@
                   "steps": [
                     {
                       "title": "ส่วน A ร่าง",
-                      "duration": 1516
+                      "duration": 1148
                     },
                     {
                       "title": "ส่วน B ยกเลิก",
-                      "duration": 1625
+                      "duration": 1421
                     },
                     {
                       "title": "ส่วน C ยกเลิกไม่ได้เมื่อมีผู้รับ",
-                      "duration": 541
+                      "duration": 639
                     },
                     {
                       "title": "ส่วน E ลบร่าง",
@@ -516,10 +514,10 @@
                     },
                     {
                       "title": "ส่วน F ยกเลิกชนกับรับเรื่อง",
-                      "duration": 322
+                      "duration": 494
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:54.470Z",
+                  "startTime": "2026-11-16T10:25:35.211Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -529,7 +527,7 @@
           ],
           "id": "748a4591e2b873db0f4e-caa98d5c080657f68c54",
           "file": "part-a.spec.ts",
-          "line": 920,
+          "line": 921,
           "column": 1
         },
         {
@@ -548,7 +546,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3254,
+                  "duration": 7717,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -556,22 +554,22 @@
                   "steps": [
                     {
                       "title": "ขนาด (หน้าจอ)",
-                      "duration": 1473
+                      "duration": 5195
                     },
                     {
                       "title": "ขนาด (API)",
-                      "duration": 339
+                      "duration": 922
                     },
                     {
                       "title": "จำนวน (หน้าจอ)",
-                      "duration": 612
+                      "duration": 692
                     },
                     {
                       "title": "จำนวน (API)",
-                      "duration": 193
+                      "duration": 233
                     }
                   ],
-                  "startTime": "2026-11-15T16:38:59.809Z",
+                  "startTime": "2026-11-16T10:25:39.978Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -581,7 +579,7 @@
           ],
           "id": "748a4591e2b873db0f4e-6fc33bd42e8b86b9ffd2",
           "file": "part-a.spec.ts",
-          "line": 1027,
+          "line": 1028,
           "column": 1
         },
         {
@@ -600,7 +598,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2692,
+                  "duration": 5119,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -608,14 +606,14 @@
                   "steps": [
                     {
                       "title": "หน้าจอ",
-                      "duration": 1234
+                      "duration": 1401
                     },
                     {
                       "title": "API",
-                      "duration": 459
+                      "duration": 569
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:03.081Z",
+                  "startTime": "2026-11-16T10:25:47.704Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -625,7 +623,7 @@
           ],
           "id": "748a4591e2b873db0f4e-ce8f0463001e80a2d8ba",
           "file": "part-a.spec.ts",
-          "line": 1092,
+          "line": 1093,
           "column": 1
         },
         {
@@ -644,7 +642,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2305,
+                  "duration": 2117,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -652,22 +650,22 @@
                   "steps": [
                     {
                       "title": "รอบ 1 · 09:00:00 (อายุ 5:00)",
-                      "duration": 403
+                      "duration": 383
                     },
                     {
                       "title": "รอบ 2 · 09:09:59 (อายุ 14:59)",
-                      "duration": 451
+                      "duration": 368
                     },
                     {
                       "title": "รอบ 3 · 09:10:00 (อายุ 15:00 พอดี) → 410",
-                      "duration": 965
+                      "duration": 889
                     },
                     {
                       "title": "รอบ 4 · 09:10:01 (อายุ 15:01) → 410",
-                      "duration": 269
+                      "duration": 351
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:05.790Z",
+                  "startTime": "2026-11-16T10:25:52.832Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -677,7 +675,7 @@
           ],
           "id": "748a4591e2b873db0f4e-c7e054d4bda3330e9da5",
           "file": "part-a.spec.ts",
-          "line": 1148,
+          "line": 1149,
           "column": 1
         },
         {
@@ -696,12 +694,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 793,
+                  "duration": 771,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:39:08.116Z",
+                  "startTime": "2026-11-16T10:25:54.960Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -711,7 +709,7 @@
           ],
           "id": "748a4591e2b873db0f4e-da1d6bf0b732abfb204e",
           "file": "part-a.spec.ts",
-          "line": 1194,
+          "line": 1195,
           "column": 1
         },
         {
@@ -730,12 +728,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1171,
+                  "duration": 1512,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:39:08.928Z",
+                  "startTime": "2026-11-16T10:25:55.739Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -745,7 +743,7 @@
           ],
           "id": "748a4591e2b873db0f4e-1df70d7b44608eae3def",
           "file": "part-a.spec.ts",
-          "line": 1222,
+          "line": 1223,
           "column": 1
         },
         {
@@ -764,12 +762,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1904,
+                  "duration": 1769,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:39:10.129Z",
+                  "startTime": "2026-11-16T10:25:57.259Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -779,7 +777,7 @@
           ],
           "id": "748a4591e2b873db0f4e-d4832336ac035ba501e4",
           "file": "part-a.spec.ts",
-          "line": 1253,
+          "line": 1254,
           "column": 1
         },
         {
@@ -798,12 +796,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3071,
+                  "duration": 2116,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:39:12.053Z",
+                  "startTime": "2026-11-16T10:25:59.039Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -813,7 +811,7 @@
           ],
           "id": "748a4591e2b873db0f4e-5773f8a8eeeb1418e79f",
           "file": "part-a.spec.ts",
-          "line": 1293,
+          "line": 1294,
           "column": 1
         },
         {
@@ -832,7 +830,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4013,
+                  "duration": 3546,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -840,18 +838,18 @@
                   "steps": [
                     {
                       "title": "ส่วน 1 พร้อมกัน (UI · 2 context)",
-                      "duration": 2552
+                      "duration": 1867
                     },
                     {
                       "title": "ส่วน 2 พร้อมกัน (API 10 ครั้ง)",
-                      "duration": 412
+                      "duration": 641
                     },
                     {
                       "title": "ส่วน 3 ต่อกัน (กำหนดได้)",
-                      "duration": 658
+                      "duration": 831
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:15.140Z",
+                  "startTime": "2026-11-16T10:26:01.163Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -861,7 +859,7 @@
           ],
           "id": "748a4591e2b873db0f4e-4de6f397c78d07b18010",
           "file": "part-a.spec.ts",
-          "line": 1353,
+          "line": 1354,
           "column": 1
         },
         {
@@ -880,12 +878,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8525,
+                  "duration": 7225,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:39:19.169Z",
+                  "startTime": "2026-11-16T10:26:04.717Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -895,7 +893,7 @@
           ],
           "id": "748a4591e2b873db0f4e-e57c7e487da1bc21f707",
           "file": "part-a.spec.ts",
-          "line": 1420,
+          "line": 1421,
           "column": 1
         },
         {
@@ -914,7 +912,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7873,
+                  "duration": 7614,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -922,42 +920,42 @@
                   "steps": [
                     {
                       "title": "แถว a: SV-01 ชำระ 2026-12-01T09:00:00+07:00 → 2026-12-04T16:30:00+07:00",
-                      "duration": 578
+                      "duration": 721
                     },
                     {
                       "title": "แถว b: SV-01 ชำระ 2026-12-01T16:29:00+07:00 → 2026-12-04T16:30:00+07:00",
-                      "duration": 588
+                      "duration": 679
                     },
                     {
                       "title": "แถว c: SV-01 ชำระ 2026-12-01T16:30:00+07:00 → 2026-12-08T16:30:00+07:00",
-                      "duration": 597
+                      "duration": 1043
                     },
                     {
                       "title": "แถว d: SV-01 ชำระ 2026-12-04T10:00:00+07:00 → 2026-12-11T16:30:00+07:00",
-                      "duration": 542
+                      "duration": 781
                     },
                     {
                       "title": "แถว e: SV-01 ชำระ 2026-12-05T10:00:00+07:00 → 2026-12-14T16:30:00+07:00",
-                      "duration": 838
+                      "duration": 709
                     },
                     {
                       "title": "แถว f: SV-02 ชำระ 2026-12-01T09:00:00+07:00 → 2026-12-17T16:30:00+07:00",
-                      "duration": 881
+                      "duration": 799
                     },
                     {
                       "title": "แถว g: SV-03 ชำระ 2026-12-01T09:00:00+07:00 → 2026-12-24T16:30:00+07:00",
-                      "duration": 888
+                      "duration": 827
                     },
                     {
                       "title": "แถว h: SV-01 ชำระ 2026-12-29T10:00:00+07:00 → 2027-01-05T16:30:00+07:00",
-                      "duration": 859
+                      "duration": 740
                     },
                     {
                       "title": "แถว i: SV-01 ชำระ 2026-12-31T23:59:00+07:00 → 2027-01-07T16:30:00+07:00",
-                      "duration": 834
+                      "duration": 754
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:27.707Z",
+                  "startTime": "2026-11-16T10:26:11.949Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -967,7 +965,7 @@
           ],
           "id": "748a4591e2b873db0f4e-557f923989df58a77f6a",
           "file": "part-a.spec.ts",
-          "line": 1480,
+          "line": 1481,
           "column": 1
         },
         {
@@ -986,7 +984,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6904,
+                  "duration": 6062,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -994,26 +992,26 @@
                   "steps": [
                     {
                       "title": "ส่วน 1: ตีกลับ 2 ธ.ค. 11:00 ส่งแก้ 3 ธ.ค. 10:00 → 8 ธ.ค.",
-                      "duration": 2724
+                      "duration": 2137
                     },
                     {
                       "title": "ส่วน 2: seed …000017 ส่งแก้ 1 ธ.ค. 09:00 → 1 ธ.ค. 16:30",
-                      "duration": 1123
+                      "duration": 1140
                     },
                     {
                       "title": "ส่วน 3: ส่งแก้ …000017 เมื่อ 4 ธ.ค. 10:00 → 4 ธ.ค. 16:30",
-                      "duration": 711
+                      "duration": 575
                     },
                     {
                       "title": "ส่วน 4: ตีกลับและส่งแก้วันเดียวกัน → dueAt ไม่เลื่อน",
-                      "duration": 736
+                      "duration": 805
                     },
                     {
                       "title": "ส่วน 5: คร่อมสุดสัปดาห์/วันหยุด ส่งแก้หลัง 16:30 → 8 ธ.ค. เกินกำหนด",
-                      "duration": 904
+                      "duration": 1000
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:35.592Z",
+                  "startTime": "2026-11-16T10:26:19.570Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1023,7 +1021,7 @@
           ],
           "id": "748a4591e2b873db0f4e-349229425af91f9c0a41",
           "file": "part-a.spec.ts",
-          "line": 1507,
+          "line": 1508,
           "column": 1
         },
         {
@@ -1042,7 +1040,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6517,
+                  "duration": 5838,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -1050,18 +1048,18 @@
                   "steps": [
                     {
                       "title": "ส่วน A คำขอใหม่ …000031 กำหนด 4 ธ.ค. 16:30",
-                      "duration": 1946
+                      "duration": 2227
                     },
                     {
                       "title": "ส่วน B seed …000016 กำหนด 8 ธ.ค. 16:30",
-                      "duration": 1298
+                      "duration": 1253
                     },
                     {
                       "title": "ส่วน C seed ที่ 09:00 (คิว + หน้าเคส)",
-                      "duration": 2221
+                      "duration": 1719
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:42.510Z",
+                  "startTime": "2026-11-16T10:26:25.641Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1071,7 +1069,7 @@
           ],
           "id": "748a4591e2b873db0f4e-e41c9f49c5de3020a4e7",
           "file": "part-a.spec.ts",
-          "line": 1603,
+          "line": 1604,
           "column": 1
         },
         {
@@ -1090,12 +1088,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2054,
+                  "duration": 2189,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-15T16:39:49.037Z",
+                  "startTime": "2026-11-16T10:26:31.487Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1105,7 +1103,7 @@
           ],
           "id": "748a4591e2b873db0f4e-94cb9558725dfead4b33",
           "file": "part-a.spec.ts",
-          "line": 1684,
+          "line": 1685,
           "column": 1
         },
         {
@@ -1124,7 +1122,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6833,
+                  "duration": 5864,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
@@ -1132,18 +1130,18 @@
                   "steps": [
                     {
                       "title": "ส่วน A ไม่แจ้งซ้ำ",
-                      "duration": 2325
+                      "duration": 2861
                     },
                     {
                       "title": "ส่วน B ข้ามระดับ (request แรก ส. 5 ธ.ค. 10:00)",
-                      "duration": 2218
+                      "duration": 1366
                     },
                     {
                       "title": "ส่วน C ขั้นรออนุมัติและรอออกเอกสาร",
-                      "duration": 1293
+                      "duration": 1120
                     }
                   ],
-                  "startTime": "2026-11-15T16:39:51.102Z",
+                  "startTime": "2026-11-16T10:26:33.685Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1153,7 +1151,7 @@
           ],
           "id": "748a4591e2b873db0f4e-8977796d92e0c9804c05",
           "file": "part-a.spec.ts",
-          "line": 1689,
+          "line": 1690,
           "column": 1
         }
       ]
@@ -1168,7 +1166,7 @@
         {
           "title": "หมวด WORKFLOW",
           "file": "part-b.spec.ts",
-          "line": 648,
+          "line": 649,
           "column": 6,
           "specs": [
             {
@@ -1187,12 +1185,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2241,
+                      "duration": 1832,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:39:58.067Z",
+                      "startTime": "2026-11-16T10:26:39.647Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1202,7 +1200,7 @@
               ],
               "id": "310b463fa2e2c7575152-b309cae025c392b1841a",
               "file": "part-b.spec.ts",
-              "line": 649,
+              "line": 650,
               "column": 3
             },
             {
@@ -1221,12 +1219,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3426,
+                      "duration": 2633,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:00.338Z",
+                      "startTime": "2026-11-16T10:26:41.490Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1236,7 +1234,7 @@
               ],
               "id": "310b463fa2e2c7575152-0e172011d8164bcfca53",
               "file": "part-b.spec.ts",
-              "line": 702,
+              "line": 703,
               "column": 3
             },
             {
@@ -1255,12 +1253,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3123,
+                      "duration": 2398,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:03.776Z",
+                      "startTime": "2026-11-16T10:26:44.133Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1270,7 +1268,7 @@
               ],
               "id": "310b463fa2e2c7575152-6ceb7df3f6435132f693",
               "file": "part-b.spec.ts",
-              "line": 768,
+              "line": 769,
               "column": 3
             },
             {
@@ -1289,58 +1287,58 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 7361,
+                      "duration": 6758,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('return-btn')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('return-btn') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('return-btn')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('return-btn')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('return-btn') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('return-btn')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at /workspace/plans/egov-eservice/app/tests/specs/part-b.spec.ts:849:48",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('return-btn')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('return-btn') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('return-btn')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs\\part-b.spec.ts:850:48",
                         "location": {
-                          "file": "/workspace/plans/egov-eservice/app/tests/specs/part-b.spec.ts",
+                          "file": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs\\part-b.spec.ts",
                           "column": 48,
-                          "line": 849
+                          "line": 850
                         },
-                        "snippet": "  847 |     }\n  848 |     await openCase(reg1.page, 'officer', C(20));\n> 849 |     await expect(tid(reg1.page, 'return-btn')).toHaveCount(0);\n      |                                                ^\n  850 |     const limitA = await expectApi(await apiOfficer(reg1, C(20), 'return', { reason: REASON10 }), 409, 'RETURN_LIMIT', 'return ครั้งที่ 3');\n  851 |     expect(limitA.message).toBe(MSG.returnLimit);\n  852 |     await reg1.page.reload();"
+                        "snippet": " \u001b[90m 848 |\u001b[39m     }\n \u001b[90m 849 |\u001b[39m     \u001b[36mawait\u001b[39m openCase(reg1\u001b[33m.\u001b[39mpage\u001b[33m,\u001b[39m \u001b[32m'officer'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mC\u001b[39m(\u001b[35m20\u001b[39m))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 850 |\u001b[39m     \u001b[36mawait\u001b[39m expect(tid(reg1\u001b[33m.\u001b[39mpage\u001b[33m,\u001b[39m \u001b[32m'return-btn'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 851 |\u001b[39m     \u001b[36mconst\u001b[39m limitA \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m expectApi(\u001b[36mawait\u001b[39m apiOfficer(reg1\u001b[33m,\u001b[39m \u001b[33mC\u001b[39m(\u001b[35m20\u001b[39m)\u001b[33m,\u001b[39m \u001b[32m'return'\u001b[39m\u001b[33m,\u001b[39m { reason\u001b[33m:\u001b[39m \u001b[33mREASON10\u001b[39m })\u001b[33m,\u001b[39m \u001b[35m409\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'RETURN_LIMIT'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'return ครั้งที่ 3'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 852 |\u001b[39m     expect(limitA\u001b[33m.\u001b[39mmessage)\u001b[33m.\u001b[39mtoBe(\u001b[33mMSG\u001b[39m\u001b[33m.\u001b[39mreturnLimit)\u001b[33m;\u001b[39m\n \u001b[90m 853 |\u001b[39m     \u001b[36mawait\u001b[39m reg1\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mreload()\u001b[33m;\u001b[39m"
                       },
                       "errors": [
                         {
                           "location": {
-                            "file": "/workspace/plans/egov-eservice/app/tests/specs/part-b.spec.ts",
+                            "file": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs\\part-b.spec.ts",
                             "column": 48,
-                            "line": 849
+                            "line": 850
                           },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('return-btn')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('return-btn') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('return-btn')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  847 |     }\n  848 |     await openCase(reg1.page, 'officer', C(20));\n> 849 |     await expect(tid(reg1.page, 'return-btn')).toHaveCount(0);\n      |                                                ^\n  850 |     const limitA = await expectApi(await apiOfficer(reg1, C(20), 'return', { reason: REASON10 }), 409, 'RETURN_LIMIT', 'return ครั้งที่ 3');\n  851 |     expect(limitA.message).toBe(MSG.returnLimit);\n  852 |     await reg1.page.reload();\n    at /workspace/plans/egov-eservice/app/tests/specs/part-b.spec.ts:849:48"
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('return-btn')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('return-btn') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('return-btn')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  848 |     }\n  849 |     await openCase(reg1.page, 'officer', C(20));\n> 850 |     await expect(tid(reg1.page, 'return-btn')).toHaveCount(0);\n      |                                                ^\n  851 |     const limitA = await expectApi(await apiOfficer(reg1, C(20), 'return', { reason: REASON10 }), 409, 'RETURN_LIMIT', 'return ครั้งที่ 3');\n  852 |     expect(limitA.message).toBe(MSG.returnLimit);\n  853 |     await reg1.page.reload();\n    at C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs\\part-b.spec.ts:850:48"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:06.914Z",
+                      "startTime": "2026-11-16T10:26:46.542Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "/workspace/plans/egov-eservice/app/test-results/artifacts/part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium/test-failed-3.png"
+                          "path": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\test-results\\artifacts\\part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium\\test-failed-2.png"
                         },
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "/workspace/plans/egov-eservice/app/test-results/artifacts/part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium/test-failed-2.png"
+                          "path": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\test-results\\artifacts\\part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium\\test-failed-3.png"
                         },
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "/workspace/plans/egov-eservice/app/test-results/artifacts/part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium/test-failed-1.png"
+                          "path": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\test-results\\artifacts\\part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium\\test-failed-1.png"
                         },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
-                          "path": "/workspace/plans/egov-eservice/app/test-results/artifacts/part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium/error-context.md"
+                          "path": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\test-results\\artifacts\\part-b-หมวด-WORKFLOW-TC-WO-dcc9c-สูงสุด-2-ครั้ง-และผลหลังครบ-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
-                        "file": "/workspace/plans/egov-eservice/app/tests/specs/part-b.spec.ts",
+                        "file": "C:\\Project\\Personal\\week2_student_-egov\\week2\\egov-eservice\\app\\tests\\specs\\part-b.spec.ts",
                         "column": 48,
-                        "line": 849
+                        "line": 850
                       }
                     }
                   ],
@@ -1349,7 +1347,7 @@
               ],
               "id": "310b463fa2e2c7575152-1bd5da45bf7828cdcc52",
               "file": "part-b.spec.ts",
-              "line": 832,
+              "line": 833,
               "column": 3
             },
             {
@@ -1368,12 +1366,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4472,
+                      "duration": 3767,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:15.088Z",
+                      "startTime": "2026-11-16T10:26:53.944Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1383,7 +1381,7 @@
               ],
               "id": "310b463fa2e2c7575152-83dc550bf364b3e1b60c",
               "file": "part-b.spec.ts",
-              "line": 906,
+              "line": 907,
               "column": 3
             },
             {
@@ -1402,12 +1400,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2629,
+                      "duration": 1973,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:19.697Z",
+                      "startTime": "2026-11-16T10:26:57.840Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1417,7 +1415,7 @@
               ],
               "id": "310b463fa2e2c7575152-b7d79324546cab24dd44",
               "file": "part-b.spec.ts",
-              "line": 959,
+              "line": 960,
               "column": 3
             }
           ]
@@ -1425,7 +1423,7 @@
         {
           "title": "หมวด DOC",
           "file": "part-b.spec.ts",
-          "line": 999,
+          "line": 1000,
           "column": 6,
           "specs": [
             {
@@ -1444,12 +1442,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1287,
+                      "duration": 1324,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:22.340Z",
+                      "startTime": "2026-11-16T10:26:59.823Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1459,7 +1457,7 @@
               ],
               "id": "310b463fa2e2c7575152-3379bd251ab35b60a52a",
               "file": "part-b.spec.ts",
-              "line": 1018,
+              "line": 1019,
               "column": 3
             },
             {
@@ -1478,12 +1476,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 588,
+                      "duration": 611,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:23.640Z",
+                      "startTime": "2026-11-16T10:27:01.156Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1493,7 +1491,7 @@
               ],
               "id": "310b463fa2e2c7575152-decd9e3353bf53d20d72",
               "file": "part-b.spec.ts",
-              "line": 1071,
+              "line": 1072,
               "column": 3
             },
             {
@@ -1512,12 +1510,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4285,
+                      "duration": 3531,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:24.245Z",
+                      "startTime": "2026-11-16T10:27:01.776Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1527,7 +1525,7 @@
               ],
               "id": "310b463fa2e2c7575152-fccfc768202aafe641c4",
               "file": "part-b.spec.ts",
-              "line": 1105,
+              "line": 1106,
               "column": 3
             }
           ]
@@ -1535,7 +1533,7 @@
         {
           "title": "หมวด PDPA",
           "file": "part-b.spec.ts",
-          "line": 1163,
+          "line": 1164,
           "column": 6,
           "specs": [
             {
@@ -1554,12 +1552,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1443,
+                      "duration": 1367,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:28.543Z",
+                      "startTime": "2026-11-16T10:27:05.315Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1569,7 +1567,7 @@
               ],
               "id": "310b463fa2e2c7575152-7f6689599031b380ede5",
               "file": "part-b.spec.ts",
-              "line": 1164,
+              "line": 1165,
               "column": 3
             },
             {
@@ -1588,12 +1586,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 718,
+                      "duration": 874,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:30.000Z",
+                      "startTime": "2026-11-16T10:27:06.692Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1603,7 +1601,7 @@
               ],
               "id": "310b463fa2e2c7575152-634fb470f0d6042c356b",
               "file": "part-b.spec.ts",
-              "line": 1194,
+              "line": 1195,
               "column": 3
             },
             {
@@ -1622,12 +1620,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1722,
+                      "duration": 2143,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:30.731Z",
+                      "startTime": "2026-11-16T10:27:07.578Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1637,7 +1635,7 @@
               ],
               "id": "310b463fa2e2c7575152-e75bdaadd0f6831cf9c4",
               "file": "part-b.spec.ts",
-              "line": 1227,
+              "line": 1228,
               "column": 3
             }
           ]
@@ -1645,7 +1643,7 @@
         {
           "title": "หมวด DASH",
           "file": "part-b.spec.ts",
-          "line": 1278,
+          "line": 1279,
           "column": 6,
           "specs": [
             {
@@ -1664,12 +1662,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 818,
+                      "duration": 1069,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:32.467Z",
+                      "startTime": "2026-11-16T10:27:09.734Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1679,7 +1677,7 @@
               ],
               "id": "310b463fa2e2c7575152-ef6af4db6022dc371b25",
               "file": "part-b.spec.ts",
-              "line": 1279,
+              "line": 1280,
               "column": 3
             },
             {
@@ -1698,12 +1696,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1375,
+                      "duration": 1773,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:33.295Z",
+                      "startTime": "2026-11-16T10:27:10.816Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1713,7 +1711,7 @@
               ],
               "id": "310b463fa2e2c7575152-36ba559998a76a317c02",
               "file": "part-b.spec.ts",
-              "line": 1315,
+              "line": 1316,
               "column": 3
             },
             {
@@ -1732,12 +1730,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2675,
+                      "duration": 3072,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:34.682Z",
+                      "startTime": "2026-11-16T10:27:12.602Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1747,7 +1745,7 @@
               ],
               "id": "310b463fa2e2c7575152-ac9dd08fe8a9bf99c3a1",
               "file": "part-b.spec.ts",
-              "line": 1344,
+              "line": 1345,
               "column": 3
             },
             {
@@ -1766,12 +1764,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1602,
+                      "duration": 1697,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:37.379Z",
+                      "startTime": "2026-11-16T10:27:15.684Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1781,7 +1779,7 @@
               ],
               "id": "310b463fa2e2c7575152-34afe0a498c428a174c6",
               "file": "part-b.spec.ts",
-              "line": 1407,
+              "line": 1408,
               "column": 3
             }
           ]
@@ -1789,7 +1787,7 @@
         {
           "title": "หมวด AUDIT",
           "file": "part-b.spec.ts",
-          "line": 1455,
+          "line": 1456,
           "column": 6,
           "specs": [
             {
@@ -1808,12 +1806,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3683,
+                      "duration": 2678,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:39.002Z",
+                      "startTime": "2026-11-16T10:27:17.395Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1823,7 +1821,7 @@
               ],
               "id": "310b463fa2e2c7575152-515862a8af1f3f097134",
               "file": "part-b.spec.ts",
-              "line": 1456,
+              "line": 1457,
               "column": 3
             },
             {
@@ -1842,12 +1840,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1158,
+                      "duration": 855,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:42.702Z",
+                      "startTime": "2026-11-16T10:27:20.082Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1857,7 +1855,7 @@
               ],
               "id": "310b463fa2e2c7575152-09319cc2b13316d225a2",
               "file": "part-b.spec.ts",
-              "line": 1557,
+              "line": 1558,
               "column": 3
             },
             {
@@ -1876,12 +1874,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2731,
+                      "duration": 2220,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:43.881Z",
+                      "startTime": "2026-11-16T10:27:20.947Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1891,7 +1889,7 @@
               ],
               "id": "310b463fa2e2c7575152-158978ebaf0bea8883d8",
               "file": "part-b.spec.ts",
-              "line": 1598,
+              "line": 1599,
               "column": 3
             }
           ]
@@ -1899,7 +1897,7 @@
         {
           "title": "หมวด RBAC",
           "file": "part-b.spec.ts",
-          "line": 1642,
+          "line": 1643,
           "column": 6,
           "specs": [
             {
@@ -1918,12 +1916,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 833,
+                      "duration": 803,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:46.629Z",
+                      "startTime": "2026-11-16T10:27:23.177Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1933,7 +1931,7 @@
               ],
               "id": "310b463fa2e2c7575152-756035d0b6ace99a18b6",
               "file": "part-b.spec.ts",
-              "line": 1643,
+              "line": 1644,
               "column": 3
             },
             {
@@ -1952,12 +1950,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1213,
+                      "duration": 1352,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:47.477Z",
+                      "startTime": "2026-11-16T10:27:23.990Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1967,7 +1965,7 @@
               ],
               "id": "310b463fa2e2c7575152-589622e0fecca1d54f1c",
               "file": "part-b.spec.ts",
-              "line": 1676,
+              "line": 1677,
               "column": 3
             },
             {
@@ -1986,12 +1984,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 10330,
+                      "duration": 8586,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:48.699Z",
+                      "startTime": "2026-11-16T10:27:25.353Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2001,7 +1999,7 @@
               ],
               "id": "310b463fa2e2c7575152-4ba58707912caf0d9a29",
               "file": "part-b.spec.ts",
-              "line": 1715,
+              "line": 1716,
               "column": 3
             },
             {
@@ -2020,12 +2018,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3130,
+                      "duration": 2767,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:40:59.038Z",
+                      "startTime": "2026-11-16T10:27:33.949Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2035,7 +2033,7 @@
               ],
               "id": "310b463fa2e2c7575152-705048da8568705a9f37",
               "file": "part-b.spec.ts",
-              "line": 1815,
+              "line": 1816,
               "column": 3
             },
             {
@@ -2054,12 +2052,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1611,
+                      "duration": 2537,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:41:02.180Z",
+                      "startTime": "2026-11-16T10:27:36.728Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2069,7 +2067,7 @@
               ],
               "id": "310b463fa2e2c7575152-813ce3c1c2fab7f2f947",
               "file": "part-b.spec.ts",
-              "line": 1918,
+              "line": 1919,
               "column": 3
             },
             {
@@ -2088,12 +2086,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2857,
+                      "duration": 2198,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:41:03.802Z",
+                      "startTime": "2026-11-16T10:27:39.275Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2103,7 +2101,7 @@
               ],
               "id": "310b463fa2e2c7575152-6d0af1dc50c515623007",
               "file": "part-b.spec.ts",
-              "line": 1988,
+              "line": 1989,
               "column": 3
             }
           ]
@@ -2111,7 +2109,7 @@
         {
           "title": "หมวด NFR",
           "file": "part-b.spec.ts",
-          "line": 2072,
+          "line": 2073,
           "column": 6,
           "specs": [
             {
@@ -2130,12 +2128,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4581,
+                      "duration": 4040,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:41:06.675Z",
+                      "startTime": "2026-11-16T10:27:41.483Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2145,7 +2143,7 @@
               ],
               "id": "310b463fa2e2c7575152-b2d6f6168336f1433cca",
               "file": "part-b.spec.ts",
-              "line": 2079,
+              "line": 2080,
               "column": 3
             },
             {
@@ -2164,12 +2162,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 9918,
+                      "duration": 8516,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:41:11.273Z",
+                      "startTime": "2026-11-16T10:27:45.535Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2179,7 +2177,7 @@
               ],
               "id": "310b463fa2e2c7575152-170c9d8c2406a4fb5ada",
               "file": "part-b.spec.ts",
-              "line": 2139,
+              "line": 2140,
               "column": 3
             },
             {
@@ -2198,12 +2196,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4106,
+                      "duration": 3202,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:41:21.206Z",
+                      "startTime": "2026-11-16T10:27:54.062Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2213,7 +2211,7 @@
               ],
               "id": "310b463fa2e2c7575152-38e4e1ed663604a4cafa",
               "file": "part-b.spec.ts",
-              "line": 2308,
+              "line": 2309,
               "column": 3
             },
             {
@@ -2226,7 +2224,7 @@
                   "annotations": [
                     {
                       "type": "inspected-files",
-                      "description": "/workspace/plans/egov-eservice/app/data/egov.db"
+                      "description": "C:/Project/Personal/week2_student_-egov/week2/egov-eservice/app/data/egov.db"
                     },
                     {
                       "type": "encryption",
@@ -2241,16 +2239,16 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1438,
+                      "duration": 1209,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-15T16:41:25.323Z",
+                      "startTime": "2026-11-16T10:27:57.277Z",
                       "annotations": [
                         {
                           "type": "inspected-files",
-                          "description": "/workspace/plans/egov-eservice/app/data/egov.db"
+                          "description": "C:/Project/Personal/week2_student_-egov/week2/egov-eservice/app/data/egov.db"
                         },
                         {
                           "type": "encryption",
@@ -2265,7 +2263,7 @@
               ],
               "id": "310b463fa2e2c7575152-d753036204d5c4cc0634",
               "file": "part-b.spec.ts",
-              "line": 2372,
+              "line": 2373,
               "column": 3
             }
           ]
@@ -2275,8 +2273,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-15T16:38:31.757Z",
-    "duration": 175172.651,
+    "startTime": "2026-11-16T10:25:16.094Z",
+    "duration": 162496.895,
     "expected": 50,
     "skipped": 0,
     "unexpected": 1,

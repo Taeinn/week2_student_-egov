@@ -271,7 +271,8 @@ function createApp() {
       code = err.code;
       extra = err.extra;
       message = err.message;
-    } else if (err && err.type === 'entity.parse.failed') {
+    } else if (err && (err.type === 'entity.parse.failed' || (err instanceof URIError && err.status === 400))) {
+      // JSON ผิดรูปแบบ · URL มี %-encoding เสีย (express: "Failed to decode param") → 400 ไม่ใช่ 500 (A-38)
       code = 'BAD_REQUEST';
     } else if (err && (err.type === 'entity.too.large' || err.status === 413)) {
       code = 'PAYLOAD_TOO_LARGE';

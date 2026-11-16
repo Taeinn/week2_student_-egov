@@ -25,7 +25,7 @@
  *   งานคงค้าง = SUBMITTED+IN_REVIEW+NEED_FIX+PENDING_APPROVAL+APPROVED ณ ตอนนี้ (ไม่ขึ้นกับช่วง · ขึ้นกับบริการ · A-41)
  *   เกินกำหนดคงค้าง = คงค้างที่ไม่ใช่ NEED_FIX และนาฬิกาตอนนี้ > due_at
  *   งานในมือ  = IN_REVIEW ที่เจ้าหน้าที่แต่ละคนถือ (owner_id) ณ ตอนนี้ · แสดงเจ้าหน้าที่ (role officer) ทุกคนแม้ 0
- *              · กรองตามบริการที่เลือก (เหมือนงานคงค้าง) · ไม่ขึ้นกับช่วง
+ *              · ไม่ขึ้นกับตัวกรองบริการและช่วง (A-41)
  *
  * ข้อมูลส่วนบุคคล (BR-24): หน้า/ไฟล์ส่งออกแสดงเฉพาะตัวเลขรวม + ชื่อบัญชีเจ้าหน้าที่ · ไม่ดึงชื่อ/เลขบัตร/เบอร์ของผู้ยื่นเลย
  *
@@ -221,10 +221,13 @@ function computeDashboard(period, service) {
       const dueMs = safeMs(r.due_at);
       if (r.status !== 'NEED_FIX' && Number.isFinite(dueMs) && nowMs > dueMs) overdue += 1;
     }
+  }
 
-    if (r.status === 'IN_REVIEW' && r.owner_id != null) {
-      ownerCount.set(r.owner_id, (ownerCount.get(r.owner_id) || 0) + 1);
-    }
+  // งานในมือ: ไม่ขึ้นกับตัวกรองบริการ (A-41) → นับจากทุกบริการ
+  for (const w of db
+    .prepare(`SELECT owner_id, COUNT(*) AS n FROM cases WHERE status = 'IN_REVIEW' AND owner_id IS NOT NULL GROUP BY owner_id`)
+    .all()) {
+    ownerCount.set(w.owner_id, w.n);
   }
 
   // BR-25: ทัน ÷ ปิดงาน · B10: ÷ รับเรื่อง (ผิด)

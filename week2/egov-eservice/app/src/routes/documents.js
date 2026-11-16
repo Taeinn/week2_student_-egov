@@ -475,7 +475,6 @@ function renderDocSection(req, c, opts = {}) {
 </dl>
 <figure data-testid="doc-qr" data-url="${esc(url)}">${qrSvg(url)}<figcaption>สแกนเพื่อตรวจสอบ: <a href="/verify/${esc(encodeURIComponent(d.verify_code))}">${esc(url)}</a></figcaption></figure>
 </div>
-</div>
 ${download}
 </section>`;
 }
